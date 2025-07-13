@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.2.0" type="partial_results">
+    <map id="UnsafeIntentLaunch">
+            <map id="unprotected">
+                <entry
+                    name="com.example.filtersms.SmsReceiver"
+                    boolean="true"/>
+                <entry
+                    name="com.example.filtersms.MainActivity"
+                    boolean="true"/>
+            </map>
+    </map>
+    <map id="UnusedResources">
+        <location id="R.color.purple_200"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="3"
+            column="12"
+            startOffset="62"
+            endLine="3"
+            endColumn="29"
+            endOffset="79"/>
+        <entry
+            name="model"
+            string="attr[colorPrimary(R),actionBarSize(R),homeAsUpIndicator(R),colorPrimaryVariant(R)],color[purple_200(D),black(U),teal_200(U),white(U),teal_700(U),purple_700(U),purple_500(U)],drawable[ic_launcher_round(U),ic_launcher(U)],id[textViewDelete(U),editTextSmtpPassword(U),editTextSender(U),buttonSendTestEmail(U),textViewLogs(U),textViewMessagePattern(U),editTextSmtpUsername(U),toolbar(U),buttonEmailSettings(U),fabAddRule(U),editTextRecipientEmail(U),buttonSaveEmailSettings(U),textViewSender(U),buttonSaveRule(U),recyclerViewRules(U),action_logs(U),editTextMessagePattern(U)],layout[activity_email_settings(U),activity_logs(U),activity_main(U),activity_add_edit_rule(U),rule_item(U)],menu[main_menu(U)],string[app_name(U)],style[Theme_FilterSMS(U),TextAppearance_AppCompat_Body1(R),Theme_MaterialComponents_DayNight_NoActionBar(R)];1e^0^1^2,1f^26,20^0^1^23,21^0^1,25^27^a^9^7^6^8^5^3;;;"/>
+    </map>
+
+</incidents>

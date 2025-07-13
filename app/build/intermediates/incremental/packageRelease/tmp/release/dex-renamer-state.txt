@@ -1,0 +1,4 @@
+#Sun Jul 13 12:35:28 IST 2025
+base.0=/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/layout_rule_item.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/layout/rule_item.xml"
+    },
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/layout_activity_email_settings.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/layout/activity_email_settings.xml"
+    },
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/layout_activity_add_edit_rule.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/layout/activity_add_edit_rule.xml"
+    },
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/menu_main_menu.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/menu/main_menu.xml"
+    },
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/layout_activity_main.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/layout_activity_logs.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/layout/activity_logs.xml"
+    },
+    {
+        "merged": "com.example.filtersms.app-merged_res-32:/layout_activity_email_settings.xml.flat",
+        "source": "com.example.filtersms.app-main-34:/layout/activity_email_settings.xml"
+    },
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/drawable_ic_launcher.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/drawable/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-merged_res-32:/drawable_ic_launcher_round.xml.flat",
+        "source": "/Users/bala.phanichand/.gradle/daemon/8.5/com.example.filtersms.app-main-34:/drawable/ic_launcher_round.xml"
+    }
+]

@@ -1,0 +1,36 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_launcher
+drawable ic_launcher_round
+id action_logs
+id buttonEmailSettings
+id buttonSaveEmailSettings
+id buttonSaveRule
+id buttonSendTestEmail
+id editTextMessagePattern
+id editTextRecipientEmail
+id editTextSender
+id editTextSmtpPassword
+id editTextSmtpUsername
+id fabAddRule
+id recyclerViewRules
+id textViewDelete
+id textViewLogs
+id textViewMessagePattern
+id textViewSender
+id toolbar
+layout activity_add_edit_rule
+layout activity_email_settings
+layout activity_logs
+layout activity_main
+layout rule_item
+menu main_menu
+string app_name
+style Theme.FilterSMS

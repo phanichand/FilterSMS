@@ -1,0 +1,274 @@
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:97: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+                if (sender.toLowerCase().contains(rule.getSender().trim().toLowerCase())) {
+                           ~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:97: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+                if (sender.toLowerCase().contains(rule.getSender().trim().toLowerCase())) {
+                                                                          ~~~~~~~~~~~
+
+   Explanation for issues of type "DefaultLocale":
+   Calling String#toLowerCase() or #toUpperCase() without specifying an
+   explicit locale is a common source of bugs. The reason for that is that
+   those methods will use the current locale on the user's device, and even
+   though the code appears to work correctly when you are developing the app,
+   it will fail in some locales. For example, in the Turkish locale, the
+   uppercase replacement for i is not I.
+
+   If you want the methods to just perform ASCII replacement, for example to
+   convert an enum name, call String#toUpperCase(Locale.US) instead. If you
+   really want to use the current locale, call
+   String#toUpperCase(Locale.getDefault()) instead.
+
+   https://developer.android.com/reference/java/util/Locale.html#default_locale
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:12: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk 34
+        ~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:36: Warning: A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1 [GradleDependency]
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:37: Warning: A newer version of com.google.android.material:material than 1.9.0 is available: 1.12.0 [GradleDependency]
+    implementation 'com.google.android.material:material:1.9.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:38: Warning: A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1 [GradleDependency]
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:43: Warning: A newer version of androidx.room:room-runtime than 2.6.0 is available: 2.7.2 [GradleDependency]
+    implementation "androidx.room:room-runtime:2.6.0"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:44: Warning: A newer version of androidx.room:room-compiler than 2.6.0 is available: 2.7.2 [GradleDependency]
+    annotationProcessor "androidx.room:room-compiler:2.6.0"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:47: Warning: A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1 [GradleDependency]
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:48: Warning: A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1 [GradleDependency]
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:27: Warning: BroadcastReceivers that declare an intent-filter for SMS_DELIVER or SMS_RECEIVED must ensure that the caller has the BROADCAST_SMS permission, otherwise it is possible for malicious actors to spoof intents [UnprotectedSMSBroadcastReceiver]
+        <receiver android:name=".SmsReceiver"
+         ~~~~~~~~
+
+   Explanation for issues of type "UnprotectedSMSBroadcastReceiver":
+   BroadcastReceivers that declare an intent-filter for SMS_DELIVER or
+   SMS_RECEIVED must ensure that the caller has the BROADCAST_SMS permission,
+   otherwise it is possible for malicious actors to spoof intents.
+
+   https://goo.gle/UnprotectedSMSBroadcastReceiver
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:53: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+        notifyDataSetChanged();
+        ~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "NotifyDataSetChanged":
+   The RecyclerView adapter's onNotifyDataSetChanged method does not specify
+   what about the data set has changed, forcing any observers to assume that
+   all existing items and structure may no longer be valid. `LayoutManager`s
+   will be forced to fully rebind and relayout all visible views.
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:38: Warning: Unnecessary; SDK_INT is always >= 23 [ObsoleteSdkInt]
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/values/themes.xml:13: Warning: Unnecessary; SDK_INT is always >= 21 [ObsoleteSdkInt]
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+                                            ~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/values/colors.xml:3: Warning: The resource R.color.purple_200 appears to be unused [UnusedResources]
+    <color name="purple_200">#FFBB86FC</color>
+           ~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:31: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:39: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:32: Warning: Missing autofillHints attribute [Autofill]
+    <EditText
+     ~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:40: Warning: Missing autofillHints attribute [Autofill]
+    <EditText
+     ~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:48: Warning: Missing autofillHints attribute [Autofill]
+    <EditText
+     ~~~~~~~~
+
+   Explanation for issues of type "Autofill":
+   Specify an autofillHints attribute when targeting SDK version 26 or higher
+   or explicitly specify that the view is not important for autofill. Your app
+   can help an autofill service classify the data correctly by providing the
+   meaning of each view that could be autofillable, such as views representing
+   usernames, passwords, credit card fields, email addresses, etc.
+
+   The hints can have any value, but it is recommended to use predefined
+   values like 'username' for a username or 'creditCardNumber' for a credit
+   card number. For a list of all predefined autofill hint constants, see the
+   AUTOFILL_HINT_ constants in the View reference at
+   https://developer.android.com/reference/android/view/View.html.
+
+   You can mark a view unimportant for autofill by specifying an
+   importantForAutofill attribute on that view or a parent view. See
+   https://developer.android.com/reference/android/view/View.html#setImportant
+   ForAutofill(int).
+
+   https://developer.android.com/guide/topics/text/autofill.html
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:42: Warning: Missing contentDescription attribute on image [ContentDescription]
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ContentDescription":
+   Non-textual widgets like ImageViews and ImageButtons should use the
+   contentDescription attribute to specify a textual description of the widget
+   such that screen readers and other accessibility tools can adequately
+   describe the user interface.
+
+   Note that elements in application screens that are purely decorative and do
+   not provide any content or enable a user action should not have
+   accessibility content descriptions. In this case, set their descriptions to
+   @null. If your app's minSdkVersion is 16 or higher, you can instead set
+   these graphical elements' android:importantForAccessibility attributes to
+   no.
+
+   Note that for text fields, you should not set both the hint and the
+   contentDescription attributes since the hint will never be shown. Just set
+   the hint.
+
+   https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:42: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        holder.textViewSender.setText("Sender: " + currentRule.getSender());
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:42: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        holder.textViewSender.setText("Sender: " + currentRule.getSender());
+                                      ~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:43: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        holder.textViewMessagePattern.setText("Message: " + currentRule.getMessagePattern());
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:43: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        holder.textViewMessagePattern.setText("Message: " + currentRule.getMessagePattern());
+                                              ~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:26: Warning: Hardcoded string "Add/Edit Filter Rule", should use @string resource [HardcodedText]
+            android:text="Add/Edit Filter Rule"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:35: Warning: Hardcoded string "Sender (e.g., +1234567890 or BankName)", should use @string resource [HardcodedText]
+            android:hint="Sender (e.g., +1234567890 or BankName)"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:43: Warning: Hardcoded string "Message Pattern (e.g., .OTP. or .password.)", should use @string resource [HardcodedText]
+            android:hint="Message Pattern (e.g., .*OTP.* or .*password.*)"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:51: Warning: Hardcoded string "Save Rule", should use @string resource [HardcodedText]
+            android:text="Save Rule"/>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:27: Warning: Hardcoded string "Email Settings", should use @string resource [HardcodedText]
+            android:text="Email Settings"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:36: Warning: Hardcoded string "Recipient Email", should use @string resource [HardcodedText]
+        android:hint="Recipient Email"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:44: Warning: Hardcoded string "SMTP Username (Your Email)", should use @string resource [HardcodedText]
+        android:hint="SMTP Username (Your Email)"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:52: Warning: Hardcoded string "SMTP Password (App Password)", should use @string resource [HardcodedText]
+        android:hint="SMTP Password (App Password)"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:60: Warning: Hardcoded string "Save Email Settings", should use @string resource [HardcodedText]
+        android:text="Save Email Settings"/>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:66: Warning: Hardcoded string "Send Test Email", should use @string resource [HardcodedText]
+        android:text="Send Test Email"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:36: Warning: Hardcoded string "Email Settings", should use @string resource [HardcodedText]
+            android:text="Email Settings"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/menu/main_menu.xml:4: Warning: Hardcoded string "Logs", should use @string resource [HardcodedText]
+        android:title="Logs" />
+        ~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:22: Warning: Hardcoded string "Sender: Example Sender", should use @string resource [HardcodedText]
+            android:text="Sender: Example Sender"/>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:29: Warning: Hardcoded string "Message: Example Message Pattern", should use @string resource [HardcodedText]
+            android:text="Message: Example Message Pattern"/>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:37: Warning: Hardcoded string "Delete", should use @string resource [HardcodedText]
+            android:text="Delete"
+            ~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+0 errors, 40 warnings

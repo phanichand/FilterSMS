@@ -1,0 +1,130 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.filtersms"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+11-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:4:5-70
+11-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:4:22-67
+12    <uses-permission android:name="android.permission.READ_SMS" />
+12-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:5:5-67
+12-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:5:22-64
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:6:5-67
+13-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:6:22-64
+14
+15    <uses-feature
+15-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:8:5-88
+16        android:name="android.hardware.telephony"
+16-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:8:19-60
+17        android:required="false" />
+17-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:8:61-85
+18
+19    <permission
+19-->[androidx.core:core:1.9.0] /Users/bala.phanichand/.gradle/caches/transforms-3/69031d9de34e6ae4e80492f7a424b6d1/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+20        android:name="com.example.filtersms.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+20-->[androidx.core:core:1.9.0] /Users/bala.phanichand/.gradle/caches/transforms-3/69031d9de34e6ae4e80492f7a424b6d1/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+21        android:protectionLevel="signature" />
+21-->[androidx.core:core:1.9.0] /Users/bala.phanichand/.gradle/caches/transforms-3/69031d9de34e6ae4e80492f7a424b6d1/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+22
+23    <uses-permission android:name="com.example.filtersms.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+23-->[androidx.core:core:1.9.0] /Users/bala.phanichand/.gradle/caches/transforms-3/69031d9de34e6ae4e80492f7a424b6d1/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+23-->[androidx.core:core:1.9.0] /Users/bala.phanichand/.gradle/caches/transforms-3/69031d9de34e6ae4e80492f7a424b6d1/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+24
+25    <application
+25-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:10:5-38:19
+26        android:allowBackup="true"
+26-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:11:9-35
+27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+27-->[androidx.core:core:1.9.0] /Users/bala.phanichand/.gradle/caches/transforms-3/69031d9de34e6ae4e80492f7a424b6d1/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+28        android:extractNativeLibs="false"
+29        android:icon="@drawable/ic_launcher"
+29-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:12:9-45
+30        android:label="@string/app_name"
+30-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:13:9-41
+31        android:roundIcon="@drawable/ic_launcher_round"
+31-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:14:9-56
+32        android:supportsRtl="true"
+32-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:15:9-35
+33        android:theme="@style/Theme.FilterSMS" >
+33-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:16:9-47
+34        <activity
+34-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:18:9-25:20
+35            android:name="com.example.filtersms.MainActivity"
+35-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:19:13-41
+36            android:exported="true" >
+36-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:20:13-36
+37            <intent-filter>
+37-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:21:13-24:29
+38                <action android:name="android.intent.action.MAIN" />
+38-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:22:17-69
+38-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:22:25-66
+39
+40                <category android:name="android.intent.category.LAUNCHER" />
+40-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:23:17-77
+40-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:23:27-74
+41            </intent-filter>
+42        </activity>
+43
+44        <receiver
+44-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:27:9-32:20
+45            android:name="com.example.filtersms.SmsReceiver"
+45-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:27:19-46
+46            android:exported="true" >
+46-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:28:13-36
+47            <intent-filter>
+47-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:29:13-31:29
+48                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+48-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:30:17-82
+48-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:30:25-79
+49            </intent-filter>
+50        </receiver>
+51
+52        <activity android:name="com.example.filtersms.EmailSettingsActivity" />
+52-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:34:9-59
+52-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:34:19-56
+53        <activity android:name="com.example.filtersms.AddEditRuleActivity" />
+53-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:35:9-57
+53-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:35:19-54
+54        <activity android:name="com.example.filtersms.LogsActivity" />
+54-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:36:9-50
+54-->/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:36:19-47
+55
+56        <service
+56-->[androidx.room:room-runtime:2.6.0] /Users/bala.phanichand/.gradle/caches/transforms-3/9fa402dd36f71105bff6b5d23bd80635/transformed/room-runtime-2.6.0/AndroidManifest.xml:24:9-28:63
+57            android:name="androidx.room.MultiInstanceInvalidationService"
+57-->[androidx.room:room-runtime:2.6.0] /Users/bala.phanichand/.gradle/caches/transforms-3/9fa402dd36f71105bff6b5d23bd80635/transformed/room-runtime-2.6.0/AndroidManifest.xml:25:13-74
+58            android:directBootAware="true"
+58-->[androidx.room:room-runtime:2.6.0] /Users/bala.phanichand/.gradle/caches/transforms-3/9fa402dd36f71105bff6b5d23bd80635/transformed/room-runtime-2.6.0/AndroidManifest.xml:26:13-43
+59            android:exported="false" />
+59-->[androidx.room:room-runtime:2.6.0] /Users/bala.phanichand/.gradle/caches/transforms-3/9fa402dd36f71105bff6b5d23bd80635/transformed/room-runtime-2.6.0/AndroidManifest.xml:27:13-37
+60
+61        <provider
+61-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+62            android:name="androidx.startup.InitializationProvider"
+62-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+63            android:authorities="com.example.filtersms.androidx-startup"
+63-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+64            android:exported="false" >
+64-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+65            <meta-data
+65-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+66                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+66-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+67                android:value="androidx.startup" />
+67-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+68            <meta-data
+68-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+69                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+69-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+70                android:value="androidx.startup" />
+70-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+71        </provider>
+72    </application>
+73
+74</manifest>
