@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         buttonEmailSettings = findViewById(R.id.buttonEmailSettings);
 
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "sms-filter-db").build();
+                AppDatabase.class, "sms-filter-db").fallbackToDestructiveMigration().build();
         smsFilterRuleDao = db.smsFilterRuleDao();
         executorService = Executors.newSingleThreadExecutor();
 
@@ -118,7 +118,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadRules();
+        if (hasSmsPermissions()) {
+            loadRules();
+        } else {
+            requestSmsPermissions();
+        }
     }
 
     private void loadRules() {
@@ -176,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permissions granted
             } else {
-                Toast.makeText(this, "SMS permissions are required to filter messages.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "SMS permissions are required to filter messages. Please grant the permissions in the app settings.", Toast.LENGTH_LONG).show();
             }
         }
     }

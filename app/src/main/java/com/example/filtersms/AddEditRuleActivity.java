@@ -49,7 +49,7 @@ public class AddEditRuleActivity extends AppCompatActivity {
         buttonSaveRule = findViewById(R.id.buttonSaveRule);
 
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "sms-filter-db").build();
+                AppDatabase.class, "sms-filter-db").fallbackToDestructiveMigration().build();
         smsFilterRuleDao = db.smsFilterRuleDao();
         executorService = Executors.newSingleThreadExecutor();
 
