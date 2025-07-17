@@ -1,3 +1,8 @@
 *.zip
 /gradle-8.5/
 .gradle/
+/app/build/
+.idea/
+build/
+local.properties
+.DS_Store
