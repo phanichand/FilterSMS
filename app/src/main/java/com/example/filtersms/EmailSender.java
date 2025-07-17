@@ -20,16 +20,16 @@ public class EmailSender {
     private static final String TAG = "EmailSender";
     private static final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    public static void sendEmail(final String senderEmail, final String senderPassword, final String recipientEmail, final String subject, final String body) {
+    public static void sendEmail(final String senderEmail, final String senderPassword, final String smtpHost, final String smtpPort, final String recipientEmail, final String subject, final String body) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 Properties props = new Properties();
-                props.put("mail.smtp.host", "smtp.gmail.com");
-                props.put("mail.smtp.socketFactory.port", "465");
+                props.put("mail.smtp.host", smtpHost);
+                props.put("mail.smtp.socketFactory.port", smtpPort);
                 props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
                 props.put("mail.smtp.auth", "true");
-                props.put("mail.smtp.port", "465");
+                props.put("mail.smtp.port", smtpPort);
 
                 Session session = Session.getInstance(props, new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {

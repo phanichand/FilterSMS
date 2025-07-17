@@ -16,6 +16,8 @@ public class EmailSettingsActivity extends AppCompatActivity {
     private EditText editTextRecipientEmail;
     private EditText editTextSmtpUsername;
     private EditText editTextSmtpPassword;
+    private EditText editTextSmtpHost;
+    private EditText editTextSmtpPort;
     private Button buttonSaveEmailSettings;
 
     private SharedPreferences sharedPreferences;
@@ -23,6 +25,8 @@ public class EmailSettingsActivity extends AppCompatActivity {
     private static final String KEY_RECIPIENT_EMAIL = "recipientEmail";
     private static final String KEY_SMTP_USERNAME = "smtpUsername";
     private static final String KEY_SMTP_PASSWORD = "smtpPassword";
+    private static final String KEY_SMTP_HOST = "smtpHost";
+    private static final String KEY_SMTP_PORT = "smtpPort";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,8 @@ public class EmailSettingsActivity extends AppCompatActivity {
         editTextRecipientEmail = findViewById(R.id.editTextRecipientEmail);
         editTextSmtpUsername = findViewById(R.id.editTextSmtpUsername);
         editTextSmtpPassword = findViewById(R.id.editTextSmtpPassword);
+        editTextSmtpHost = findViewById(R.id.editTextSmtpHost);
+        editTextSmtpPort = findViewById(R.id.editTextSmtpPort);
         buttonSaveEmailSettings = findViewById(R.id.buttonSaveEmailSettings);
 
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -67,10 +73,14 @@ public class EmailSettingsActivity extends AppCompatActivity {
         String recipientEmail = sharedPreferences.getString(KEY_RECIPIENT_EMAIL, "");
         String smtpUsername = sharedPreferences.getString(KEY_SMTP_USERNAME, "");
         String smtpPassword = sharedPreferences.getString(KEY_SMTP_PASSWORD, "");
+        String smtpHost = sharedPreferences.getString(KEY_SMTP_HOST, "smtp.gmail.com");
+        String smtpPort = sharedPreferences.getString(KEY_SMTP_PORT, "465");
 
         editTextRecipientEmail.setText(recipientEmail);
         editTextSmtpUsername.setText(smtpUsername);
         editTextSmtpPassword.setText(smtpPassword);
+        editTextSmtpHost.setText(smtpHost);
+        editTextSmtpPort.setText(smtpPort);
     }
 
     private void saveEmailSettings() {
@@ -78,6 +88,8 @@ public class EmailSettingsActivity extends AppCompatActivity {
         editor.putString(KEY_RECIPIENT_EMAIL, editTextRecipientEmail.getText().toString());
         editor.putString(KEY_SMTP_USERNAME, editTextSmtpUsername.getText().toString());
         editor.putString(KEY_SMTP_PASSWORD, editTextSmtpPassword.getText().toString());
+        editor.putString(KEY_SMTP_HOST, editTextSmtpHost.getText().toString());
+        editor.putString(KEY_SMTP_PORT, editTextSmtpPort.getText().toString());
         editor.apply();
 
         Toast.makeText(this, "Email Settings saved!", Toast.LENGTH_SHORT).show();
@@ -88,8 +100,10 @@ public class EmailSettingsActivity extends AppCompatActivity {
         String recipientEmail = editTextRecipientEmail.getText().toString();
         String smtpUsername = editTextSmtpUsername.getText().toString();
         String smtpPassword = editTextSmtpPassword.getText().toString();
+        String smtpHost = editTextSmtpHost.getText().toString();
+        String smtpPort = editTextSmtpPort.getText().toString();
 
-        if (recipientEmail.isEmpty() || smtpUsername.isEmpty() || smtpPassword.isEmpty()) {
+        if (recipientEmail.isEmpty() || smtpUsername.isEmpty() || smtpPassword.isEmpty() || smtpHost.isEmpty() || smtpPort.isEmpty()) {
             Log.e("EmailSettingsActivity", "Email settings are incomplete.");
             Toast.makeText(this, "Please fill in all email settings", Toast.LENGTH_SHORT).show();
             return;
@@ -99,7 +113,7 @@ public class EmailSettingsActivity extends AppCompatActivity {
         String subject = "Test Email from FilterSMS App";
         String body = "This is a test email to verify your SMTP settings.";
 
-        EmailSender.sendEmail(smtpUsername, smtpPassword, recipientEmail, subject, body);
+        EmailSender.sendEmail(smtpUsername, smtpPassword, smtpHost, smtpPort, recipientEmail, subject, body);
 
         Toast.makeText(this, "Sending test email...", Toast.LENGTH_SHORT).show();
     }
