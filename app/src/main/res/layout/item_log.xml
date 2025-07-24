@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="12sp"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/textViewMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>
