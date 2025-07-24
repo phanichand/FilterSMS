@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.example.filtersms.data.AppDatabase;
 import com.example.filtersms.data.SmsFilterRule;
 import com.example.filtersms.data.SmsFilterRuleDao;
+import com.example.filtersms.data.Migration1To2;
+import com.example.filtersms.data.Migration2To3;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,7 +51,9 @@ public class AddEditRuleActivity extends AppCompatActivity {
         buttonSaveRule = findViewById(R.id.buttonSaveRule);
 
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "sms-filter-db").fallbackToDestructiveMigration().build();
+                AppDatabase.class, "sms-filter-db")
+                .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3)
+                .build();
         smsFilterRuleDao = db.smsFilterRuleDao();
         executorService = Executors.newSingleThreadExecutor();
 

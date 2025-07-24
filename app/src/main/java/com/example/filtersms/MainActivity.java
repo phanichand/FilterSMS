@@ -21,8 +21,24 @@ import android.widget.Toast;
 import com.example.filtersms.data.AppDatabase;
 import com.example.filtersms.data.SmsFilterRule;
 import com.example.filtersms.data.SmsFilterRuleDao;
+import com.example.filtersms.data.Migration1To2;
+import com.example.filtersms.data.Migration2To3;
 import com.example.filtersms.ui.RuleAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import android.app.Activity;
+import android.net.Uri;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -64,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
         buttonEmailSettings = findViewById(R.id.buttonEmailSettings);
 
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "sms-filter-db").fallbackToDestructiveMigration().build();
+                AppDatabase.class, "sms-filter-db")
+                .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3)
+                .build();
         smsFilterRuleDao = db.smsFilterRuleDao();
         executorService = Executors.newSingleThreadExecutor();
 
@@ -107,9 +125,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_logs) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_logs) {
             Intent intent = new Intent(this, LogsActivity.class);
             startActivity(intent);
+            return true;
+        } else if (itemId == R.id.action_backup) {
+            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("application/json");
+            intent.putExtra(Intent.EXTRA_TITLE, "sms_filter_rules.json");
+            createDocumentLauncher.launch(intent);
+            return true;
+        } else if (itemId == R.id.action_restore) {
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("application/json");
+            openDocumentLauncher.launch(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -183,5 +215,67 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "SMS permissions are required to filter messages. Please grant the permissions in the app settings.", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private final ActivityResultLauncher<Intent> createDocumentLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                    Uri uri = result.getData().getData();
+                    if (uri != null) {
+                        backupRules(uri);
+                    }
+                }
+            });
+
+    private final ActivityResultLauncher<Intent> openDocumentLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                    Uri uri = result.getData().getData();
+                    if (uri != null) {
+                        restoreRules(uri);
+                    }
+                }
+            });
+
+    private void backupRules(Uri uri) {
+        executorService.execute(() -> {
+            List<SmsFilterRule> rules = smsFilterRuleDao.getAllRules();
+            Gson gson = new Gson();
+            String json = gson.toJson(rules);
+
+            try (OutputStream os = getContentResolver().openOutputStream(uri)) {
+                os.write(json.getBytes());
+                runOnUiThread(() -> Toast.makeText(this, "Rules backed up successfully", Toast.LENGTH_SHORT).show());
+            } catch (Exception e) {
+                runOnUiThread(() -> Toast.makeText(this, "Backup failed", Toast.LENGTH_SHORT).show());
+            }
+        });
+    }
+
+    private void restoreRules(Uri uri) {
+        executorService.execute(() -> {
+            try (InputStream is = getContentResolver().openInputStream(uri);
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+                Gson gson = new Gson();
+                Type listType = new TypeToken<ArrayList<SmsFilterRule>>(){}.getType();
+                List<SmsFilterRule> rules = gson.fromJson(reader, listType);
+
+                if (rules != null) {
+                    smsFilterRuleDao.deleteAllRules();
+                    for (SmsFilterRule rule : rules) {
+                        rule.setId(0); // Reset ID to allow auto-generation
+                        smsFilterRuleDao.insertRule(rule);
+                    }
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Rules restored successfully", Toast.LENGTH_SHORT).show();
+                        loadRules();
+                    });
+                }
+            } catch (Exception e) {
+                runOnUiThread(() -> Toast.makeText(this, "Restore failed", Toast.LENGTH_SHORT).show());
+            }
+        });
     }
 }

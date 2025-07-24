@@ -18,6 +18,8 @@ import com.example.filtersms.data.LogEntry;
 import com.example.filtersms.data.LogEntryDao;
 import com.example.filtersms.data.SmsFilterRule;
 import com.example.filtersms.data.SmsFilterRuleDao;
+import com.example.filtersms.data.Migration1To2;
+import com.example.filtersms.data.Migration2To3;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,7 +59,9 @@ public class SmsReceiver extends BroadcastReceiver {
 
             // Initialize Room database and DAO
             db = Room.databaseBuilder(context.getApplicationContext(),
-                    AppDatabase.class, "sms-filter-db").fallbackToDestructiveMigration().build();
+                    AppDatabase.class, "sms-filter-db")
+                    .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3)
+                    .build();
             smsFilterRuleDao = db.smsFilterRuleDao();
             logEntryDao = db.logEntryDao();
             executorService = Executors.newSingleThreadExecutor();
