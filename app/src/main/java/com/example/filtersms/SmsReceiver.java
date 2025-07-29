@@ -39,6 +39,9 @@ public class SmsReceiver extends BroadcastReceiver {
     private static final String KEY_SMTP_PASSWORD = "smtpPassword";
     private static final String KEY_SMTP_HOST = "smtpHost";
     private static final String KEY_SMTP_PORT = "smtpPort";
+    private static final String KEY_MESSAGES_LISTENED = "messagesListened";
+    private static final String KEY_MESSAGES_FILTERED = "messagesFiltered";
+    private static final String KEY_EMAILS_SENT = "emailsSent";
 
     private AppDatabase db;
     private SmsFilterRuleDao smsFilterRuleDao;
@@ -83,13 +86,16 @@ public class SmsReceiver extends BroadcastReceiver {
                             String fullMessage = messageBody.toString();
 
                             log("Read incoming message from " + sender + ": " + fullMessage);
+                            incrementCounter(sharedPreferences, KEY_MESSAGES_LISTENED);
 
                             if (isFiltered(sender, fullMessage, rules)) {
                                 log("Message from " + sender + " passed filter. Sending email.");
+                                incrementCounter(sharedPreferences, KEY_MESSAGES_FILTERED);
                                 if (!recipientEmail.isEmpty() && !smtpUsername.isEmpty() && !smtpPassword.isEmpty() && !smtpHost.isEmpty() && !smtpPort.isEmpty()) {
                                     String emailSubject = sender;
                                     EmailSender.sendEmail(smtpUsername, smtpPassword, smtpHost, smtpPort, recipientEmail, emailSubject, fullMessage);
                                     log("Email sent for message from " + sender);
+                                    incrementCounter(sharedPreferences, KEY_EMAILS_SENT);
                                 } else {
                                     log("Email sending skipped for message from " + sender + ": Email not configured.");
                                 }
@@ -154,5 +160,10 @@ public class SmsReceiver extends BroadcastReceiver {
             }
         }
         return false; // No rule matched this SMS
+    }
+
+    private void incrementCounter(SharedPreferences sharedPreferences, String key) {
+        int count = sharedPreferences.getInt(key, 0);
+        sharedPreferences.edit().putInt(key, count + 1).apply();
     }
 }

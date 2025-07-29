@@ -21,6 +21,34 @@
     </incident>
 
     <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive icon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_launcher.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="272"/>
+    </incident>
+
+    <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive roundIcon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_launcher_round.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="272"/>
+    </incident>
+
+    <incident
         id="HardcodedText"
         severity="warning"
         message="Hardcoded string &quot;Add/Edit Filter Rule&quot;, should use `@string` resource">
@@ -273,17 +301,101 @@
     </incident>
 
     <incident
+        id="Autofill"
+        severity="warning"
+        message="Missing `autofillHints` attribute">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set autofillHints"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="autofillHints"
+                value=""
+                dot="0"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAutofill=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAutofill"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_email_settings.xml"
+            line="56"
+            column="6"
+            startOffset="2027"
+            endLine="56"
+            endColumn="14"
+            endOffset="2035"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;SMTP Host (e.g., smtp.gmail.com)&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_email_settings.xml"
+            line="60"
+            column="9"
+            startOffset="2176"
+            endLine="60"
+            endColumn="56"
+            endOffset="2223"/>
+    </incident>
+
+    <incident
+        id="Autofill"
+        severity="warning"
+        message="Missing `autofillHints` attribute">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set autofillHints"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="autofillHints"
+                value=""
+                dot="0"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAutofill=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAutofill"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_email_settings.xml"
+            line="64"
+            column="6"
+            startOffset="2310"
+            endLine="64"
+            endColumn="14"
+            endOffset="2318"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;SMTP Port (e.g., 465 or 587)&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_email_settings.xml"
+            line="68"
+            column="9"
+            startOffset="2459"
+            endLine="68"
+            endColumn="52"
+            endOffset="2502"/>
+    </incident>
+
+    <incident
         id="HardcodedText"
         severity="warning"
         message="Hardcoded string &quot;Save Email Settings&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_email_settings.xml"
-            line="60"
+            line="76"
             column="9"
-            startOffset="2182"
-            endLine="60"
+            startOffset="2743"
+            endLine="76"
             endColumn="43"
-            endOffset="2216"/>
+            endOffset="2777"/>
     </incident>
 
     <incident
@@ -292,12 +404,54 @@
         message="Hardcoded string &quot;Send Test Email&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_email_settings.xml"
-            line="66"
+            line="82"
             column="9"
-            startOffset="2375"
-            endLine="66"
+            startOffset="2936"
+            endLine="82"
             endColumn="39"
-            endOffset="2405"/>
+            endOffset="2966"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Messages Listened: 0&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="35"
+            column="17"
+            startOffset="1307"
+            endLine="35"
+            endColumn="52"
+            endOffset="1342"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Messages Filtered: 0&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="42"
+            column="17"
+            startOffset="1587"
+            endLine="42"
+            endColumn="52"
+            endOffset="1622"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Emails Sent: 0&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="49"
+            column="17"
+            startOffset="1861"
+            endLine="49"
+            endColumn="46"
+            endOffset="1890"/>
     </incident>
 
     <incident
@@ -306,12 +460,12 @@
         message="Hardcoded string &quot;Email Settings&quot;, should use `@string` resource">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
-            line="36"
+            line="67"
             column="13"
-            startOffset="1421"
-            endLine="36"
+            startOffset="2483"
+            endLine="67"
             endColumn="42"
-            endOffset="1450"/>
+            endOffset="2512"/>
     </incident>
 
     <incident
@@ -334,12 +488,12 @@
         </fix-alternatives>
         <location
             file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
-            line="42"
+            line="73"
             column="6"
-            startOffset="1582"
-            endLine="42"
+            startOffset="2644"
+            endLine="73"
             endColumn="75"
-            endOffset="1651"/>
+            endOffset="2713"/>
     </incident>
 
     <incident
@@ -399,17 +553,129 @@
     </incident>
 
     <incident
-        id="DefaultLocale"
+        id="HardcodedText"
         severity="warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        message="Hardcoded string &quot;Backup Rules&quot;, should use `@string` resource">
         <location
-            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/SmsReceiver.java"
-            line="97"
-            column="28"
-            startOffset="4466"
-            endLine="97"
-            endColumn="39"
-            endOffset="4477"/>
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/main_menu.xml"
+            line="7"
+            column="9"
+            startOffset="204"
+            endLine="7"
+            endColumn="37"
+            endOffset="232"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Restore Rules&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/main_menu.xml"
+            line="10"
+            column="9"
+            startOffset="295"
+            endLine="10"
+            endColumn="38"
+            endOffset="324"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Clear Logs&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/menu_logs.xml"
+            line="5"
+            column="9"
+            startOffset="184"
+            endLine="5"
+            endColumn="35"
+            endOffset="210"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/MainActivity.java"
+            line="190"
+            column="38"
+            startOffset="6823"
+            endLine="190"
+            endColumn="78"
+            endOffset="6863"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/MainActivity.java"
+            line="190"
+            column="38"
+            startOffset="6823"
+            endLine="190"
+            endColumn="59"
+            endOffset="6844"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/MainActivity.java"
+            line="191"
+            column="38"
+            startOffset="6903"
+            endLine="191"
+            endColumn="78"
+            endOffset="6943"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/MainActivity.java"
+            line="191"
+            column="38"
+            startOffset="6903"
+            endLine="191"
+            endColumn="59"
+            endOffset="6924"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/MainActivity.java"
+            line="192"
+            column="32"
+            startOffset="6977"
+            endLine="192"
+            endColumn="60"
+            endOffset="7005"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/MainActivity.java"
+            line="192"
+            column="32"
+            startOffset="6977"
+            endLine="192"
+            endColumn="47"
+            endOffset="6992"/>
     </incident>
 
     <incident
@@ -418,12 +684,40 @@
         message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/SmsReceiver.java"
-            line="97"
-            column="75"
-            startOffset="4513"
-            endLine="97"
-            endColumn="86"
-            endOffset="4524"/>
+            line="133"
+            column="29"
+            startOffset="6457"
+            endLine="133"
+            endColumn="40"
+            endOffset="6468"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/SmsReceiver.java"
+            line="133"
+            column="76"
+            startOffset="6504"
+            endLine="133"
+            endColumn="87"
+            endOffset="6515"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/ui/LogAdapter.java"
+            line="23"
+            column="9"
+            startOffset="594"
+            endLine="23"
+            endColumn="31"
+            endOffset="616"/>
     </incident>
 
     <incident
@@ -612,6 +906,25 @@
     <incident
         id="GradleDependency"
         severity="warning"
+        message="A newer version of com.google.code.gson:gson than 2.8.8 is available: 2.11.0">
+        <fix-replace
+            description="Change to 2.11.0"
+            family="Update versions"
+            oldString="2.8.8"
+            replacement="2.11.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="45"
+            column="20"
+            startOffset="1251"
+            endLine="45"
+            endColumn="53"
+            endOffset="1284"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
         message="A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1">
         <fix-replace
             description="Change to 1.2.1"
@@ -620,12 +933,12 @@
             replacement="1.2.1"/>
         <location
             file="${:app*projectDir}/build.gradle"
-            line="47"
+            line="48"
             column="31"
-            startOffset="1307"
-            endLine="47"
+            startOffset="1360"
+            endLine="48"
             endColumn="62"
-            endOffset="1338"/>
+            endOffset="1391"/>
     </incident>
 
     <incident
@@ -639,12 +952,12 @@
             replacement="3.6.1"/>
         <location
             file="${:app*projectDir}/build.gradle"
-            line="48"
+            line="49"
             column="31"
-            startOffset="1369"
-            endLine="48"
+            startOffset="1422"
+            endLine="49"
             endColumn="75"
-            endOffset="1413"/>
+            endOffset="1466"/>
     </incident>
 
 </incidents>

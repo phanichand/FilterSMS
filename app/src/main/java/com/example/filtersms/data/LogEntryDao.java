@@ -16,4 +16,6 @@ public interface LogEntryDao {
 
     @Query("DELETE FROM log_table")
     void deleteAllLogs();
+
+    
 }

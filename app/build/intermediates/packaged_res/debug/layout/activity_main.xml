@@ -20,6 +20,37 @@
             app:title="SMS Filter Rules"
             app:menu="@menu/main_menu" />
 
+        
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/text_messages_listened"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Messages Listened: 0"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text_messages_filtered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Messages Filtered: 0"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text_emails_sent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emails Sent: 0"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRules"
             android:layout_width="match_parent"

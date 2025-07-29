@@ -2,4 +2,10 @@
     <item
         android:id="@+id/action_logs"
         android:title="Logs" />
+    <item
+        android:id="@+id/action_backup"
+        android:title="Backup Rules" />
+    <item
+        android:id="@+id/action_restore"
+        android:title="Restore Rules" />
 </menu>

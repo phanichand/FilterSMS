@@ -26,20 +26,24 @@ import java.util.Set;
 public final class AppDatabase_Impl extends AppDatabase {
   private volatile SmsFilterRuleDao _smsFilterRuleDao;
 
+  private volatile LogEntryDao _logEntryDao;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `sms_filter_rules` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sender` TEXT, `messagePattern` TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `log_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` TEXT, `message` TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ac6ee930f39e653f3383f536ee576cb5')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8767381f346074671eed36069164ed3c')");
       }
 
       @Override
       public void dropAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS `sms_filter_rules`");
+        db.execSQL("DROP TABLE IF EXISTS `log_table`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -96,9 +100,22 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoSmsFilterRules + "\n"
                   + " Found:\n" + _existingSmsFilterRules);
         }
+        final HashMap<String, TableInfo.Column> _columnsLogTable = new HashMap<String, TableInfo.Column>(3);
+        _columnsLogTable.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsLogTable.put("timestamp", new TableInfo.Column("timestamp", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsLogTable.put("message", new TableInfo.Column("message", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysLogTable = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesLogTable = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoLogTable = new TableInfo("log_table", _columnsLogTable, _foreignKeysLogTable, _indicesLogTable);
+        final TableInfo _existingLogTable = TableInfo.read(db, "log_table");
+        if (!_infoLogTable.equals(_existingLogTable)) {
+          return new RoomOpenHelper.ValidationResult(false, "log_table(com.example.filtersms.data.LogEntry).\n"
+                  + " Expected:\n" + _infoLogTable + "\n"
+                  + " Found:\n" + _existingLogTable);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "ac6ee930f39e653f3383f536ee576cb5", "cc48bb258466f106e5dce6a5891b2bf9");
+    }, "8767381f346074671eed36069164ed3c", "1c368b37790d415ee617b4b6d134751c");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -109,7 +126,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "sms_filter_rules");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "sms_filter_rules","log_table");
   }
 
   @Override
@@ -119,6 +136,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     try {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `sms_filter_rules`");
+      _db.execSQL("DELETE FROM `log_table`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -134,6 +152,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(SmsFilterRuleDao.class, SmsFilterRuleDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(LogEntryDao.class, LogEntryDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -162,6 +181,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _smsFilterRuleDao = new SmsFilterRuleDao_Impl(this);
         }
         return _smsFilterRuleDao;
+      }
+    }
+  }
+
+  @Override
+  public LogEntryDao logEntryDao() {
+    if (_logEntryDao != null) {
+      return _logEntryDao;
+    } else {
+      synchronized(this) {
+        if(_logEntryDao == null) {
+          _logEntryDao = new LogEntryDao_Impl(this);
+        }
+        return _logEntryDao;
       }
     }
   }

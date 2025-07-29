@@ -520,6 +520,10 @@
       jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.sun.mail/android-activation/1.6.7/be2313e85510e68188c58f52eb7e5c043c3c005c/android-activation-1.6.7.jar"
       resolved="com.sun.mail:android-activation:1.6.7"/>
   <library
+      name="com.google.code.gson:gson:2.8.8@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.8/431fc3cbc0ff81abdbfde070062741089c3ba874/gson-2.8.8.jar"
+      resolved="com.google.code.gson:gson:2.8.8"/>
+  <library
       name="androidx.tracing:tracing:1.0.0@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/cfa67c3cda6084d3b5c3922897ea126c/transformed/jetified-tracing-1.0.0/jars/classes.jar"
       resolved="androidx.tracing:tracing:1.0.0"

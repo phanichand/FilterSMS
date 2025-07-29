@@ -550,6 +550,10 @@
       jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.sun.mail/android-activation/1.6.7/be2313e85510e68188c58f52eb7e5c043c3c005c/android-activation-1.6.7.jar"
       resolved="com.sun.mail:android-activation:1.6.7"/>
   <library
+      name="com.google.code.gson:gson:2.8.8@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.8/431fc3cbc0ff81abdbfde070062741089c3ba874/gson-2.8.8.jar"
+      resolved="com.google.code.gson:gson:2.8.8"/>
+  <library
       name="androidx.emoji2:emoji2-views-helper:1.2.0@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/a2792be0cc8599b6153c499278110f04/transformed/jetified-emoji2-views-helper-1.2.0/jars/classes.jar"
       resolved="androidx.emoji2:emoji2-views-helper:1.2.0"

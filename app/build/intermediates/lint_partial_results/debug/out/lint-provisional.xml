@@ -35,17 +35,17 @@
             replacement="">
             <range
                 file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/SmsReceiver.java"
-                startOffset="1196"
-                endOffset="1237"/>
+                startOffset="1841"
+                endOffset="1882"/>
         </fix-replace>
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/SmsReceiver.java"
-            line="38"
+            line="51"
             column="5"
-            startOffset="1196"
-            endLine="38"
+            startOffset="1841"
+            endLine="51"
             endColumn="46"
-            endOffset="1237"/>
+            endOffset="1882"/>
         <map>
             <condition minGE="ffffffffffc00000"/>
         </map>

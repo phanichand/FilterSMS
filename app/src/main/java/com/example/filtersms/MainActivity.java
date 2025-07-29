@@ -10,12 +10,14 @@ import androidx.room.Room;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.filtersms.data.AppDatabase;
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     private RuleAdapter ruleAdapter;
     private FloatingActionButton fabAddRule;
     private Button buttonEmailSettings;
+    private TextView textMessagesListened;
+    private TextView textMessagesFiltered;
+    private TextView textEmailsSent;
 
     private AppDatabase db;
     private SmsFilterRuleDao smsFilterRuleDao;
@@ -78,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
         fabAddRule = findViewById(R.id.fabAddRule);
         buttonEmailSettings = findViewById(R.id.buttonEmailSettings);
+        textMessagesListened = findViewById(R.id.text_messages_listened);
+        textMessagesFiltered = findViewById(R.id.text_messages_filtered);
+        textEmailsSent = findViewById(R.id.text_emails_sent);
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "sms-filter-db")
@@ -152,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (hasSmsPermissions()) {
             loadRules();
+            loadStats();
         } else {
             requestSmsPermissions();
         }
@@ -170,6 +179,17 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void loadStats() {
+        SharedPreferences sharedPreferences = getSharedPreferences("FilterSmsPrefs", MODE_PRIVATE);
+        int messagesListened = sharedPreferences.getInt("messagesListened", 0);
+        int messagesFiltered = sharedPreferences.getInt("messagesFiltered", 0);
+        int emailsSent = sharedPreferences.getInt("emailsSent", 0);
+
+        textMessagesListened.setText("Messages Listened: " + messagesListened);
+        textMessagesFiltered.setText("Messages Filtered: " + messagesFiltered);
+        textEmailsSent.setText("Emails Sent: " + emailsSent);
     }
 
     private void deleteRule(final SmsFilterRule rule) {

@@ -24,4 +24,7 @@ public interface SmsFilterRuleDao {
 
     @Query("SELECT * FROM sms_filter_rules WHERE id = :ruleId")
     SmsFilterRule getRuleById(int ruleId);
+
+    @Query("DELETE FROM sms_filter_rules")
+    void deleteAllRules();
 }

@@ -6,6 +6,7 @@ import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
@@ -26,6 +27,8 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
   private final EntityDeletionOrUpdateAdapter<SmsFilterRule> __deletionAdapterOfSmsFilterRule;
 
   private final EntityDeletionOrUpdateAdapter<SmsFilterRule> __updateAdapterOfSmsFilterRule;
+
+  private final SharedSQLiteStatement __preparedStmtOfDeleteAllRules;
 
   public SmsFilterRuleDao_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
@@ -89,6 +92,14 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
         statement.bindLong(4, entity.id);
       }
     };
+    this.__preparedStmtOfDeleteAllRules = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM sms_filter_rules";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -124,6 +135,23 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void deleteAllRules() {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteAllRules.acquire();
+    try {
+      __db.beginTransaction();
+      try {
+        _stmt.executeUpdateDelete();
+        __db.setTransactionSuccessful();
+      } finally {
+        __db.endTransaction();
+      }
+    } finally {
+      __preparedStmtOfDeleteAllRules.release(_stmt);
     }
   }
 

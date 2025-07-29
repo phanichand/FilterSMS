@@ -51,6 +51,22 @@
         android:layout_height="wrap_content"
         android:hint="SMTP Password (App Password)"
         android:inputType="textPassword"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/editTextSmtpHost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SMTP Host (e.g., smtp.gmail.com)"
+        android:inputType="textUri"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/editTextSmtpPort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SMTP Port (e.g., 465 or 587)"
+        android:inputType="number"
         android:layout_marginBottom="16dp"/>
 
     <Button

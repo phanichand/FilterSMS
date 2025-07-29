@@ -2924,6 +2924,8 @@ drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher
+drawable ic_launcher_background
+drawable ic_launcher_foreground
 drawable ic_launcher_round
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
@@ -3058,6 +3060,7 @@ id accessibility_custom_action_9
 id actionDown
 id actionDownUp
 id actionUp
+id action_backup
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -3065,6 +3068,7 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_clear_logs
 id action_container
 id action_context_bar
 id action_divider
@@ -3075,6 +3079,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_restore
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3186,7 +3191,9 @@ id edge
 id editTextMessagePattern
 id editTextRecipientEmail
 id editTextSender
+id editTextSmtpHost
 id editTextSmtpPassword
+id editTextSmtpPort
 id editTextSmtpUsername
 id edit_query
 id elastic
@@ -3360,6 +3367,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerViewLogs
 id recyclerViewRules
 id reverseSawtooth
 id right
@@ -3465,12 +3473,16 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textViewDelete
-id textViewLogs
+id textViewMessage
 id textViewMessagePattern
 id textViewSender
+id textViewTimestamp
+id text_emails_sent
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
+id text_messages_filtered
+id text_messages_listened
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -3650,6 +3662,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout item_log
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3713,6 +3726,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu main_menu
+menu menu_logs
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description

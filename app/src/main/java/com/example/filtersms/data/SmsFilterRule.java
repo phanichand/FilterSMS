@@ -28,4 +28,8 @@ public class SmsFilterRule {
     public String getMessagePattern() {
         return messagePattern;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
