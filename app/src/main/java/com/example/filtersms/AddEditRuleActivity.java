@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.filtersms.data.AppDatabase;
@@ -26,6 +28,12 @@ public class AddEditRuleActivity extends AppCompatActivity {
     private EditText editTextSender;
     private EditText editTextMessagePattern;
     private Button buttonSaveRule;
+    private Switch switchGoogleSheets;
+    private EditText editTextSheetId;
+    private EditText editTextSheetName;
+    private Button buttonVerifySheet;
+    private Switch switchWebhook;
+    private EditText editTextWebhookUrl;
 
     private AppDatabase db;
     private SmsFilterRuleDao smsFilterRuleDao;
@@ -49,10 +57,16 @@ public class AddEditRuleActivity extends AppCompatActivity {
         editTextSender = findViewById(R.id.editTextSender);
         editTextMessagePattern = findViewById(R.id.editTextMessagePattern);
         buttonSaveRule = findViewById(R.id.buttonSaveRule);
+        switchGoogleSheets = findViewById(R.id.switchGoogleSheets);
+        editTextSheetId = findViewById(R.id.editTextSheetId);
+        editTextSheetName = findViewById(R.id.editTextSheetName);
+        buttonVerifySheet = findViewById(R.id.buttonVerifySheet);
+        switchWebhook = findViewById(R.id.switchWebhook);
+        editTextWebhookUrl = findViewById(R.id.editTextWebhookUrl);
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "sms-filter-db")
-                .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3)
+                .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3, AppDatabase.MIGRATION_3_4, AppDatabase.MIGRATION_4_5)
                 .build();
         smsFilterRuleDao = db.smsFilterRuleDao();
         executorService = Executors.newSingleThreadExecutor();
@@ -69,6 +83,39 @@ public class AddEditRuleActivity extends AppCompatActivity {
                 saveRule();
             }
         });
+
+        switchGoogleSheets.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editTextSheetId.setVisibility(View.VISIBLE);
+                    editTextSheetName.setVisibility(View.VISIBLE);
+                    buttonVerifySheet.setVisibility(View.VISIBLE);
+                } else {
+                    editTextSheetId.setVisibility(View.GONE);
+                    editTextSheetName.setVisibility(View.GONE);
+                    buttonVerifySheet.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        switchWebhook.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editTextWebhookUrl.setVisibility(View.VISIBLE);
+                } else {
+                    editTextWebhookUrl.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        buttonVerifySheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                verifySheet();
+            }
+        });
     }
 
     private void loadRule(final int id) {
@@ -82,6 +129,15 @@ public class AddEditRuleActivity extends AppCompatActivity {
                         if (rule != null) {
                             editTextSender.setText(rule.getSender());
                             editTextMessagePattern.setText(rule.getMessagePattern());
+                            switchGoogleSheets.setChecked(rule.isSendToGoogleSheet());
+                            if (rule.isSendToGoogleSheet()) {
+                                editTextSheetId.setText(rule.getSheetId());
+                                editTextSheetName.setText(rule.getSheetName());
+                            }
+                            switchWebhook.setChecked(rule.isSendToWebhook());
+                            if (rule.isSendToWebhook()) {
+                                editTextWebhookUrl.setText(rule.getWebhookUrl());
+                            }
                         }
                     }
                 });
@@ -92,21 +148,39 @@ public class AddEditRuleActivity extends AppCompatActivity {
     private void saveRule() {
         final String sender = editTextSender.getText().toString().trim();
         final String messagePattern = editTextMessagePattern.getText().toString().trim();
+        final boolean sendToGoogleSheet = switchGoogleSheets.isChecked();
+        final String sheetId = editTextSheetId.getText().toString().trim();
+        final String sheetName = editTextSheetName.getText().toString().trim();
+        final boolean sendToWebhook = switchWebhook.isChecked();
+        final String webhookUrl = editTextWebhookUrl.getText().toString().trim();
 
-        
+        if (sendToGoogleSheet && (sheetId.isEmpty() || sheetName.isEmpty())) {
+            Toast.makeText(this, "Please provide a Google Sheet ID and Sheet Name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (sendToWebhook && webhookUrl.isEmpty()) {
+            Toast.makeText(this, "Please provide a Webhook URL", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 if (ruleId == -1) {
                     // New rule
-                    smsFilterRuleDao.insertRule(new SmsFilterRule(sender, messagePattern));
+                    smsFilterRuleDao.insertRule(new SmsFilterRule(sender, messagePattern, sendToGoogleSheet, sheetId, sheetName, sendToWebhook, webhookUrl));
                 } else {
                     // Update existing rule
                     SmsFilterRule rule = smsFilterRuleDao.getRuleById(ruleId);
                     if (rule != null) {
                         rule.sender = sender;
                         rule.messagePattern = messagePattern;
+                        rule.sendToGoogleSheet = sendToGoogleSheet;
+                        rule.sheetId = sheetId;
+                        rule.sheetName = sheetName;
+                        rule.sendToWebhook = sendToWebhook;
+                        rule.webhookUrl = webhookUrl;
                         smsFilterRuleDao.updateRule(rule);
                     }
                 }
@@ -118,6 +192,20 @@ public class AddEditRuleActivity extends AppCompatActivity {
                     }
                 });
             }
+        });
+    }
+
+    private void verifySheet() {
+        final String sheetId = editTextSheetId.getText().toString().trim();
+        final String sheetName = editTextSheetName.getText().toString().trim();
+
+        if (sheetId.isEmpty() || sheetName.isEmpty()) {
+            Toast.makeText(this, "Please provide a Google Sheet ID and Sheet Name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        executorService.execute(() -> {
+            GoogleSheetsService.verifySheet(getApplicationContext(), sheetId, sheetName);
         });
     }
 

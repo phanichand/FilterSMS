@@ -31,13 +31,13 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(5) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `sms_filter_rules` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sender` TEXT, `messagePattern` TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `sms_filter_rules` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sender` TEXT, `messagePattern` TEXT, `sendToGoogleSheet` INTEGER NOT NULL, `sheetId` TEXT, `sheetName` TEXT, `sendToWebhook` INTEGER NOT NULL, `webhookUrl` TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `log_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` TEXT, `message` TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8767381f346074671eed36069164ed3c')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5413f99748efd091350864a448c89af8')");
       }
 
       @Override
@@ -87,10 +87,15 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsSmsFilterRules = new HashMap<String, TableInfo.Column>(3);
+        final HashMap<String, TableInfo.Column> _columnsSmsFilterRules = new HashMap<String, TableInfo.Column>(8);
         _columnsSmsFilterRules.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsSmsFilterRules.put("sender", new TableInfo.Column("sender", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsSmsFilterRules.put("messagePattern", new TableInfo.Column("messagePattern", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSmsFilterRules.put("sendToGoogleSheet", new TableInfo.Column("sendToGoogleSheet", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSmsFilterRules.put("sheetId", new TableInfo.Column("sheetId", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSmsFilterRules.put("sheetName", new TableInfo.Column("sheetName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSmsFilterRules.put("sendToWebhook", new TableInfo.Column("sendToWebhook", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSmsFilterRules.put("webhookUrl", new TableInfo.Column("webhookUrl", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysSmsFilterRules = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesSmsFilterRules = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoSmsFilterRules = new TableInfo("sms_filter_rules", _columnsSmsFilterRules, _foreignKeysSmsFilterRules, _indicesSmsFilterRules);
@@ -115,7 +120,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "8767381f346074671eed36069164ed3c", "1c368b37790d415ee617b4b6d134751c");
+    }, "5413f99748efd091350864a448c89af8", "60d73b786b446dec69ee588e5d5eedaa");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

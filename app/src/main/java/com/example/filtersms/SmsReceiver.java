@@ -22,7 +22,9 @@ import com.example.filtersms.data.Migration1To2;
 import com.example.filtersms.data.Migration2To3;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
@@ -63,7 +65,7 @@ public class SmsReceiver extends BroadcastReceiver {
             // Initialize Room database and DAO
             db = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, "sms-filter-db")
-                    .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3)
+                    .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3, AppDatabase.MIGRATION_3_4, AppDatabase.MIGRATION_4_5)
                     .build();
             smsFilterRuleDao = db.smsFilterRuleDao();
             logEntryDao = db.logEntryDao();
@@ -88,16 +90,38 @@ public class SmsReceiver extends BroadcastReceiver {
                             log("Read incoming message from " + sender + ": " + fullMessage);
                             incrementCounter(sharedPreferences, KEY_MESSAGES_LISTENED);
 
-                            if (isFiltered(sender, fullMessage, rules)) {
+                            SmsFilterRule matchingRule = getMatchingRule(sender, fullMessage, rules);
+                            if (matchingRule != null) {
                                 log("Message from " + sender + " passed filter. Sending email.");
                                 incrementCounter(sharedPreferences, KEY_MESSAGES_FILTERED);
                                 if (!recipientEmail.isEmpty() && !smtpUsername.isEmpty() && !smtpPassword.isEmpty() && !smtpHost.isEmpty() && !smtpPort.isEmpty()) {
                                     String emailSubject = sender;
-                                    EmailSender.sendEmail(smtpUsername, smtpPassword, smtpHost, smtpPort, recipientEmail, emailSubject, fullMessage);
-                                    log("Email sent for message from " + sender);
-                                    incrementCounter(sharedPreferences, KEY_EMAILS_SENT);
+                                    EmailSender.sendEmail(smtpUsername, smtpPassword, smtpHost, smtpPort, recipientEmail, emailSubject, fullMessage, new EmailSender.Callback() {
+                                        @Override
+                                        public void onEmailSent(boolean success) {
+                                            if (success) {
+                                                log("Email sent successfully for message from " + sender);
+                                                incrementCounter(sharedPreferences, KEY_EMAILS_SENT);
+                                            } else {
+                                                log("Failed to send email for message from " + sender);
+                                            }
+                                        }
+                                    });
                                 } else {
                                     log("Email sending skipped for message from " + sender + ": Email not configured.");
+                                }
+
+                                if (matchingRule.isSendToGoogleSheet()) {
+                                    List<Object> data = new ArrayList<>();
+                                    data.add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date()));
+                                    data.add(sender);
+                                    data.add(fullMessage);
+                                    GoogleSheetsService.writeToSheet(context, matchingRule.getSheetId(), matchingRule.getSheetName(), data);
+                                }
+
+                                if (matchingRule.isSendToWebhook()) {
+                                    String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
+                                    WebhookService.sendWebhook(matchingRule.getWebhookUrl(), sender, fullMessage, timestamp);
                                 }
                             } else {
                                 log("Message from " + sender + " did not pass filter.");
@@ -122,9 +146,9 @@ public class SmsReceiver extends BroadcastReceiver {
         }
     }
 
-    private boolean isFiltered(String sender, String messageBody, List<SmsFilterRule> rules) {
+    private SmsFilterRule getMatchingRule(String sender, String messageBody, List<SmsFilterRule> rules) {
         if (rules == null || rules.isEmpty()) {
-            return false; // No rules configured, so no filtering
+            return null; // No rules configured, so no filtering
         }
 
         for (SmsFilterRule rule : rules) {
@@ -156,10 +180,10 @@ public class SmsReceiver extends BroadcastReceiver {
             }
 
             if (messageMatches) {
-                return true; // This SMS matches the rule
+                return rule; // This SMS matches the rule
             }
         }
-        return false; // No rule matched this SMS
+        return null; // No rule matched this SMS
     }
 
     private void incrementCounter(SharedPreferences sharedPreferences, String key) {

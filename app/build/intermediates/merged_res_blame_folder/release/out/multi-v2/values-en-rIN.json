@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.filtersms.app-mergeReleaseResources-30:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "com.example.filtersms.app-mergeReleaseResources-33:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
                     "source": "/Users/bala.phanichand/.gradle/caches/transforms-3/69031d9de34e6ae4e80492f7a424b6d1/transformed/core-1.9.0/res/values-en-rIN/values-en-rIN.xml",

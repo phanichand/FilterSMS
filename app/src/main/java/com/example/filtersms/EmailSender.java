@@ -20,7 +20,11 @@ public class EmailSender {
     private static final String TAG = "EmailSender";
     private static final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    public static void sendEmail(final String senderEmail, final String senderPassword, final String smtpHost, final String smtpPort, final String recipientEmail, final String subject, final String body) {
+    public interface Callback {
+        void onEmailSent(boolean success);
+    }
+
+    public static void sendEmail(final String senderEmail, final String senderPassword, final String smtpHost, final String smtpPort, final String recipientEmail, final String subject, final String body, final Callback callback) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -30,6 +34,9 @@ public class EmailSender {
                 props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
                 props.put("mail.smtp.auth", "true");
                 props.put("mail.smtp.port", smtpPort);
+                props.put("mail.smtp.starttls.enable", "true");
+
+                Log.d(TAG, "Email properties: " + props);
 
                 Session session = Session.getInstance(props, new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -46,8 +53,14 @@ public class EmailSender {
 
                     Transport.send(message);
                     Log.d(TAG, "Email sent successfully to " + recipientEmail);
+                    if (callback != null) {
+                        callback.onEmailSent(true);
+                    }
                 } catch (MessagingException e) {
                     Log.e(TAG, "Error sending email to " + recipientEmail + ": " + e.getMessage(), e);
+                    if (callback != null) {
+                        callback.onEmailSent(false);
+                    }
                 }
             }
         });

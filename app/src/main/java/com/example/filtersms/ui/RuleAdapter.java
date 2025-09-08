@@ -3,6 +3,7 @@ package com.example.filtersms.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,13 +57,13 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
     class RuleViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewSender;
         private TextView textViewMessagePattern;
-        private TextView textViewDelete;
+        private ImageButton buttonDelete;
 
         public RuleViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewSender = itemView.findViewById(R.id.textViewSender);
             textViewMessagePattern = itemView.findViewById(R.id.textViewMessagePattern);
-            textViewDelete = itemView.findViewById(R.id.textViewDelete);
+            buttonDelete = itemView.findViewById(R.id.buttonDelete);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,7 +75,7 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
                 }
             });
 
-            textViewDelete.setOnClickListener(new View.OnClickListener() {
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();

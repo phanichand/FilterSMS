@@ -23,7 +23,7 @@ android {
         }
     }
     packagingOptions {
-        resources.excludes += ['META-INF/NOTICE.md', 'META-INF/LICENSE.md']
+        resources.excludes += ['META-INF/DEPENDENCIES', 'META-INF/NOTICE.md', 'META-INF/LICENSE.md']
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -43,6 +43,12 @@ dependencies {
     implementation "androidx.room:room-runtime:2.6.0"
     annotationProcessor "androidx.room:room-compiler:2.6.0"
     implementation 'com.google.code.gson:gson:2.8.8'
+
+    // Google Sheets API
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+    implementation 'com.google.api-client:google-api-client-android:2.4.0'
+    implementation 'com.google.apis:google-api-services-sheets:v4-rev20220927-2.0.0'
+    implementation 'com.google.http-client:google-http-client-jackson2:1.42.3'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

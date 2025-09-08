@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.filtersms.app-mergeDebugResources-30:/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "com.example.filtersms.app-mergeDebugResources-33:/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
                     "source": "/Users/bala.phanichand/.gradle/caches/transforms-3/68b2f9db80fd5fbadc0f11fe19280caa/transformed/appcompat-1.6.1/res/values-h720dp-v13/values-h720dp-v13.xml",

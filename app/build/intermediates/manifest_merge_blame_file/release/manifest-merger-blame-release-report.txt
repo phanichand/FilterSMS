@@ -104,27 +104,68 @@
 59            android:exported="false" />
 59-->[androidx.room:room-runtime:2.6.0] /Users/bala.phanichand/.gradle/caches/transforms-3/9fa402dd36f71105bff6b5d23bd80635/transformed/room-runtime-2.6.0/AndroidManifest.xml:27:13-37
 60
-61        <provider
-61-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-62            android:name="androidx.startup.InitializationProvider"
-62-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-63            android:authorities="com.example.filtersms.androidx-startup"
-63-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-64            android:exported="false" >
-64-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-65            <meta-data
-65-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-66                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-66-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-67                android:value="androidx.startup" />
-67-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-68            <meta-data
-68-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
-69                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-69-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
-70                android:value="androidx.startup" />
-70-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
-71        </provider>
-72    </application>
-73
-74</manifest>
+61        <activity
+61-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:23:9-27:75
+62            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+62-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:24:13-93
+63            android:excludeFromRecents="true"
+63-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:25:13-46
+64            android:exported="false"
+64-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:26:13-37
+65            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+65-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:27:13-72
+66        <!--
+67            Service handling Google Sign-In user revocation. For apps that do not integrate with
+68            Google Sign-In, this service will never be started.
+69        -->
+70        <service
+70-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:33:9-37:51
+71            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+71-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:34:13-89
+72            android:exported="true"
+72-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:35:13-36
+73            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+73-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:36:13-107
+74            android:visibleToInstantApps="true" />
+74-->[com.google.android.gms:play-services-auth:21.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/AndroidManifest.xml:37:13-48
+75
+76        <activity
+76-->[com.google.android.gms:play-services-base:18.3.0] /Users/bala.phanichand/.gradle/caches/transforms-3/c932a3b714e756012def3441b2096260/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:9-22:45
+77            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+77-->[com.google.android.gms:play-services-base:18.3.0] /Users/bala.phanichand/.gradle/caches/transforms-3/c932a3b714e756012def3441b2096260/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:19-85
+78            android:exported="false"
+78-->[com.google.android.gms:play-services-base:18.3.0] /Users/bala.phanichand/.gradle/caches/transforms-3/c932a3b714e756012def3441b2096260/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:22:19-43
+79            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+79-->[com.google.android.gms:play-services-base:18.3.0] /Users/bala.phanichand/.gradle/caches/transforms-3/c932a3b714e756012def3441b2096260/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:21:19-78
+80
+81        <meta-data
+81-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bala.phanichand/.gradle/caches/transforms-3/873c482681c6bd23291d576229c25026/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
+82            android:name="com.google.android.gms.version"
+82-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bala.phanichand/.gradle/caches/transforms-3/873c482681c6bd23291d576229c25026/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
+83            android:value="@integer/google_play_services_version" />
+83-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bala.phanichand/.gradle/caches/transforms-3/873c482681c6bd23291d576229c25026/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+84
+85        <provider
+85-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+86            android:name="androidx.startup.InitializationProvider"
+86-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+87            android:authorities="com.example.filtersms.androidx-startup"
+87-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+88            android:exported="false" >
+88-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+89            <meta-data
+89-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+90                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+90-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+91                android:value="androidx.startup" />
+91-->[androidx.emoji2:emoji2:1.2.0] /Users/bala.phanichand/.gradle/caches/transforms-3/d121cbb831bfcedee4bd4dacef3ca9b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+92            <meta-data
+92-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+93                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+93-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+94                android:value="androidx.startup" />
+94-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bala.phanichand/.gradle/caches/transforms-3/09eebfef02b068e8648c27b44a779134/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+95        </provider>
+96    </application>
+97
+98</manifest>

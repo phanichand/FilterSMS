@@ -169,6 +169,7 @@
   <com.android.designcompose/>
   <com.android.dynamic-feature/>
   <com.android.experimental.built-in-kotlin/>
+  <com.android.extensions.xr/>
   <com.android.fused-library/>
   <com.android.identity/>
   <com.android.installreferrer/>

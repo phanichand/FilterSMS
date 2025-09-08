@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,12 @@ import com.example.filtersms.data.SmsFilterRuleDao;
 import com.example.filtersms.data.Migration1To2;
 import com.example.filtersms.data.Migration2To3;
 import com.example.filtersms.ui.RuleAdapter;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.BufferedReader;
@@ -57,12 +64,26 @@ public class MainActivity extends AppCompatActivity {
     private TextView textMessagesListened;
     private TextView textMessagesFiltered;
     private TextView textEmailsSent;
+    private TextView textLinkedAccount;
 
     private AppDatabase db;
     private SmsFilterRuleDao smsFilterRuleDao;
     private ExecutorService executorService;
 
+    private GoogleSignInClient mGoogleSignInClient;
+
     public static final String EXTRA_RULE_ID = "com.example.filtersms.EXTRA_RULE_ID";
+
+    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+                    handleSignInResult(task);
+                } else {
+                    Toast.makeText(MainActivity.this, "Sign in failed", Toast.LENGTH_SHORT).show();
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +107,16 @@ public class MainActivity extends AppCompatActivity {
         textMessagesListened = findViewById(R.id.text_messages_listened);
         textMessagesFiltered = findViewById(R.id.text_messages_filtered);
         textEmailsSent = findViewById(R.id.text_emails_sent);
+        textLinkedAccount = findViewById(R.id.text_linked_account);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "sms-filter-db")
-                .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3)
+                        AppDatabase.class, "sms-filter-db")
+                .addMigrations(Migration1To2.MIGRATION_1_2, Migration2To3.MIGRATION_2_3, AppDatabase.MIGRATION_3_4, AppDatabase.MIGRATION_4_5)
                 .build();
         smsFilterRuleDao = db.smsFilterRuleDao();
         executorService = Executors.newSingleThreadExecutor();
@@ -132,6 +159,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        MenuItem linkAccountMenuItem = menu.findItem(R.id.action_link_google_account);
+        if (account != null) {
+            linkAccountMenuItem.setTitle("Unlink Google Account");
+        } else {
+            linkAccountMenuItem.setTitle("Link Google Account");
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.action_logs) {
@@ -151,6 +190,20 @@ public class MainActivity extends AppCompatActivity {
             intent.setType("application/json");
             openDocumentLauncher.launch(intent);
             return true;
+        } else if (itemId == R.id.action_link_google_account) {
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+            if (account == null) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                signInLauncher.launch(signInIntent);
+            } else {
+                mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> {
+                    SharedPreferences sharedPreferences = getSharedPreferences("FilterSmsPrefs", MODE_PRIVATE);
+                    sharedPreferences.edit().remove("googleAccountName").apply();
+                    Toast.makeText(MainActivity.this, "Signed out", Toast.LENGTH_SHORT).show();
+                    updateSignInUI();
+                });
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -161,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
         if (hasSmsPermissions()) {
             loadRules();
             loadStats();
+            updateSignInUI();
         } else {
             requestSmsPermissions();
         }
@@ -235,6 +289,35 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "SMS permissions are required to filter messages. Please grant the permissions in the app settings.", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // Signed in successfully, show authenticated UI.
+            SharedPreferences sharedPreferences = getSharedPreferences("FilterSmsPrefs", MODE_PRIVATE);
+            sharedPreferences.edit().putString("googleAccountName", account.getEmail()).apply();
+            Toast.makeText(this, "Signed in as " + account.getEmail(), Toast.LENGTH_SHORT).show();
+            updateSignInUI();
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("MainActivity", "signInResult:failed code=" + e.getStatusCode());
+            Toast.makeText(this, "Sign in failed", Toast.LENGTH_SHORT).show();
+            updateSignInUI();
+        }
+    }
+
+    private void updateSignInUI() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account != null) {
+            textLinkedAccount.setText("Linked Account: " + account.getEmail());
+            textLinkedAccount.setVisibility(View.VISIBLE);
+        } else {
+            textLinkedAccount.setVisibility(View.GONE);
+        }
+        invalidateOptionsMenu(); // This will trigger onPrepareOptionsMenu
     }
 
     private final ActivityResultLauncher<Intent> createDocumentLauncher = registerForActivityResult(

@@ -1,10 +1,13 @@
 package com.example.filtersms;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar; // Added import
+import androidx.appcompat.widget.Toolbar;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem; // Added import
+import android.os.Handler;
+import android.os.Looper;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,12 +36,12 @@ public class EmailSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_settings);
 
-        Toolbar toolbar = findViewById(R.id.toolbar); // Initialize Toolbar
-        setSupportActionBar(toolbar); // Set as ActionBar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enable back button
-            getSupportActionBar().setDisplayShowHomeEnabled(true); // Show back button
-            getSupportActionBar().setTitle("Email Settings"); // Set title
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle("Email Settings");
         }
 
         editTextRecipientEmail = findViewById(R.id.editTextRecipientEmail);
@@ -74,7 +77,7 @@ public class EmailSettingsActivity extends AppCompatActivity {
         String smtpUsername = sharedPreferences.getString(KEY_SMTP_USERNAME, "");
         String smtpPassword = sharedPreferences.getString(KEY_SMTP_PASSWORD, "");
         String smtpHost = sharedPreferences.getString(KEY_SMTP_HOST, "smtp.gmail.com");
-        String smtpPort = sharedPreferences.getString(KEY_SMTP_PORT, "465");
+        String smtpPort = sharedPreferences.getString(KEY_SMTP_PORT, "587");
 
         editTextRecipientEmail.setText(recipientEmail);
         editTextSmtpUsername.setText(smtpUsername);
@@ -113,15 +116,33 @@ public class EmailSettingsActivity extends AppCompatActivity {
         String subject = "Test Email from FilterSMS App";
         String body = "This is a test email to verify your SMTP settings.";
 
-        EmailSender.sendEmail(smtpUsername, smtpPassword, smtpHost, smtpPort, recipientEmail, subject, body);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Sending test email...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
-        Toast.makeText(this, "Sending test email...", Toast.LENGTH_SHORT).show();
+        EmailSender.sendEmail(smtpUsername, smtpPassword, smtpHost, smtpPort, recipientEmail, subject, body, new EmailSender.Callback() {
+            @Override
+            public void onEmailSent(boolean success) {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                        if (success) {
+                            Toast.makeText(EmailSettingsActivity.this, "Test email sent successfully!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(EmailSettingsActivity.this, "Failed to send test email. Check logs for details.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish(); // Close this activity and go back to the previous one
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

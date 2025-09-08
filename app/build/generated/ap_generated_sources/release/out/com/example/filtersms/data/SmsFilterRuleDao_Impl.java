@@ -36,7 +36,7 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `sms_filter_rules` (`id`,`sender`,`messagePattern`) VALUES (nullif(?, 0),?,?)";
+        return "INSERT OR ABORT INTO `sms_filter_rules` (`id`,`sender`,`messagePattern`,`sendToGoogleSheet`,`sheetId`,`sheetName`,`sendToWebhook`,`webhookUrl`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -52,6 +52,25 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
           statement.bindNull(3);
         } else {
           statement.bindString(3, entity.messagePattern);
+        }
+        final int _tmp = entity.sendToGoogleSheet ? 1 : 0;
+        statement.bindLong(4, _tmp);
+        if (entity.sheetId == null) {
+          statement.bindNull(5);
+        } else {
+          statement.bindString(5, entity.sheetId);
+        }
+        if (entity.sheetName == null) {
+          statement.bindNull(6);
+        } else {
+          statement.bindString(6, entity.sheetName);
+        }
+        final int _tmp_1 = entity.sendToWebhook ? 1 : 0;
+        statement.bindLong(7, _tmp_1);
+        if (entity.webhookUrl == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.webhookUrl);
         }
       }
     };
@@ -72,7 +91,7 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `sms_filter_rules` SET `id` = ?,`sender` = ?,`messagePattern` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `sms_filter_rules` SET `id` = ?,`sender` = ?,`messagePattern` = ?,`sendToGoogleSheet` = ?,`sheetId` = ?,`sheetName` = ?,`sendToWebhook` = ?,`webhookUrl` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -89,7 +108,26 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
         } else {
           statement.bindString(3, entity.messagePattern);
         }
-        statement.bindLong(4, entity.id);
+        final int _tmp = entity.sendToGoogleSheet ? 1 : 0;
+        statement.bindLong(4, _tmp);
+        if (entity.sheetId == null) {
+          statement.bindNull(5);
+        } else {
+          statement.bindString(5, entity.sheetId);
+        }
+        if (entity.sheetName == null) {
+          statement.bindNull(6);
+        } else {
+          statement.bindString(6, entity.sheetName);
+        }
+        final int _tmp_1 = entity.sendToWebhook ? 1 : 0;
+        statement.bindLong(7, _tmp_1);
+        if (entity.webhookUrl == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.webhookUrl);
+        }
+        statement.bindLong(9, entity.id);
       }
     };
     this.__preparedStmtOfDeleteAllRules = new SharedSQLiteStatement(__db) {
@@ -165,6 +203,11 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
       final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
       final int _cursorIndexOfSender = CursorUtil.getColumnIndexOrThrow(_cursor, "sender");
       final int _cursorIndexOfMessagePattern = CursorUtil.getColumnIndexOrThrow(_cursor, "messagePattern");
+      final int _cursorIndexOfSendToGoogleSheet = CursorUtil.getColumnIndexOrThrow(_cursor, "sendToGoogleSheet");
+      final int _cursorIndexOfSheetId = CursorUtil.getColumnIndexOrThrow(_cursor, "sheetId");
+      final int _cursorIndexOfSheetName = CursorUtil.getColumnIndexOrThrow(_cursor, "sheetName");
+      final int _cursorIndexOfSendToWebhook = CursorUtil.getColumnIndexOrThrow(_cursor, "sendToWebhook");
+      final int _cursorIndexOfWebhookUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "webhookUrl");
       final List<SmsFilterRule> _result = new ArrayList<SmsFilterRule>(_cursor.getCount());
       while (_cursor.moveToNext()) {
         final SmsFilterRule _item;
@@ -180,7 +223,33 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
         } else {
           _tmpMessagePattern = _cursor.getString(_cursorIndexOfMessagePattern);
         }
-        _item = new SmsFilterRule(_tmpSender,_tmpMessagePattern);
+        final boolean _tmpSendToGoogleSheet;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfSendToGoogleSheet);
+        _tmpSendToGoogleSheet = _tmp != 0;
+        final String _tmpSheetId;
+        if (_cursor.isNull(_cursorIndexOfSheetId)) {
+          _tmpSheetId = null;
+        } else {
+          _tmpSheetId = _cursor.getString(_cursorIndexOfSheetId);
+        }
+        final String _tmpSheetName;
+        if (_cursor.isNull(_cursorIndexOfSheetName)) {
+          _tmpSheetName = null;
+        } else {
+          _tmpSheetName = _cursor.getString(_cursorIndexOfSheetName);
+        }
+        final boolean _tmpSendToWebhook;
+        final int _tmp_1;
+        _tmp_1 = _cursor.getInt(_cursorIndexOfSendToWebhook);
+        _tmpSendToWebhook = _tmp_1 != 0;
+        final String _tmpWebhookUrl;
+        if (_cursor.isNull(_cursorIndexOfWebhookUrl)) {
+          _tmpWebhookUrl = null;
+        } else {
+          _tmpWebhookUrl = _cursor.getString(_cursorIndexOfWebhookUrl);
+        }
+        _item = new SmsFilterRule(_tmpSender,_tmpMessagePattern,_tmpSendToGoogleSheet,_tmpSheetId,_tmpSheetName,_tmpSendToWebhook,_tmpWebhookUrl);
         _item.id = _cursor.getInt(_cursorIndexOfId);
         _result.add(_item);
       }
@@ -203,6 +272,11 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
       final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
       final int _cursorIndexOfSender = CursorUtil.getColumnIndexOrThrow(_cursor, "sender");
       final int _cursorIndexOfMessagePattern = CursorUtil.getColumnIndexOrThrow(_cursor, "messagePattern");
+      final int _cursorIndexOfSendToGoogleSheet = CursorUtil.getColumnIndexOrThrow(_cursor, "sendToGoogleSheet");
+      final int _cursorIndexOfSheetId = CursorUtil.getColumnIndexOrThrow(_cursor, "sheetId");
+      final int _cursorIndexOfSheetName = CursorUtil.getColumnIndexOrThrow(_cursor, "sheetName");
+      final int _cursorIndexOfSendToWebhook = CursorUtil.getColumnIndexOrThrow(_cursor, "sendToWebhook");
+      final int _cursorIndexOfWebhookUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "webhookUrl");
       final SmsFilterRule _result;
       if (_cursor.moveToFirst()) {
         final String _tmpSender;
@@ -217,7 +291,33 @@ public final class SmsFilterRuleDao_Impl implements SmsFilterRuleDao {
         } else {
           _tmpMessagePattern = _cursor.getString(_cursorIndexOfMessagePattern);
         }
-        _result = new SmsFilterRule(_tmpSender,_tmpMessagePattern);
+        final boolean _tmpSendToGoogleSheet;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfSendToGoogleSheet);
+        _tmpSendToGoogleSheet = _tmp != 0;
+        final String _tmpSheetId;
+        if (_cursor.isNull(_cursorIndexOfSheetId)) {
+          _tmpSheetId = null;
+        } else {
+          _tmpSheetId = _cursor.getString(_cursorIndexOfSheetId);
+        }
+        final String _tmpSheetName;
+        if (_cursor.isNull(_cursorIndexOfSheetName)) {
+          _tmpSheetName = null;
+        } else {
+          _tmpSheetName = _cursor.getString(_cursorIndexOfSheetName);
+        }
+        final boolean _tmpSendToWebhook;
+        final int _tmp_1;
+        _tmp_1 = _cursor.getInt(_cursorIndexOfSendToWebhook);
+        _tmpSendToWebhook = _tmp_1 != 0;
+        final String _tmpWebhookUrl;
+        if (_cursor.isNull(_cursorIndexOfWebhookUrl)) {
+          _tmpWebhookUrl = null;
+        } else {
+          _tmpWebhookUrl = _cursor.getString(_cursorIndexOfWebhookUrl);
+        }
+        _result = new SmsFilterRule(_tmpSender,_tmpMessagePattern,_tmpSendToGoogleSheet,_tmpSheetId,_tmpSheetName,_tmpSendToWebhook,_tmpWebhookUrl);
         _result.id = _cursor.getInt(_cursorIndexOfId);
       } else {
         _result = null;

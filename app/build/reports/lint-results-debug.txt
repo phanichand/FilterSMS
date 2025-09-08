@@ -1,7 +1,7 @@
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:133: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:149: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
                 if (!sender.toLowerCase().contains(rule.getSender().trim().toLowerCase())) {
                             ~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:133: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:149: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
                 if (!sender.toLowerCase().contains(rule.getSender().trim().toLowerCase())) {
                                                                            ~~~~~~~~~~~
 
@@ -42,6 +42,34 @@
 
    https://developer.android.com/distribute/best-practices/develop/target-sdk.html
 
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/AddEditRuleActivity.java:31: Warning: Use SwitchCompat from AppCompat or SwitchMaterial from Material library [UseSwitchCompatOrMaterialCode from androidx.appcompat]
+    private Switch switchGoogleSheets;
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/AddEditRuleActivity.java:35: Warning: Use SwitchCompat from AppCompat or SwitchMaterial from Material library [UseSwitchCompatOrMaterialCode from androidx.appcompat]
+    private Switch switchWebhook;
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseSwitchCompatOrMaterialCode":
+   Use SwitchCompat from AppCompat or SwitchMaterial from Material library
+
+   Vendor: Android Open Source Project
+   Identifier: androidx.appcompat
+   Feedback: https://issuetracker.google.com/issues/new?component=460343
+
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:53: Warning: Use SwitchCompat from AppCompat or SwitchMaterial from Material library [UseSwitchCompatOrMaterialXml from androidx.appcompat]
+        <Switch
+        ^
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:85: Warning: Use SwitchCompat from AppCompat or SwitchMaterial from Material library [UseSwitchCompatOrMaterialXml from androidx.appcompat]
+        <Switch
+        ^
+
+   Explanation for issues of type "UseSwitchCompatOrMaterialXml":
+   Use SwitchCompat from AppCompat or SwitchMaterial from Material library
+
+   Vendor: Android Open Source Project
+   Identifier: androidx.appcompat
+   Feedback: https://issuetracker.google.com/issues/new?component=460343
+
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:36: Warning: A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1 [GradleDependency]
     implementation 'androidx.appcompat:appcompat:1.6.1'
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,10 +88,13 @@
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:45: Warning: A newer version of com.google.code.gson:gson than 2.8.8 is available: 2.11.0 [GradleDependency]
     implementation 'com.google.code.gson:gson:2.8.8'
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:48: Warning: A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1 [GradleDependency]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:48: Warning: A newer version of com.google.android.gms:play-services-auth than 21.2.0 is available: 21.4.0 [GradleDependency]
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:54: Warning: A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.3.0 [GradleDependency]
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:49: Warning: A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1 [GradleDependency]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/build.gradle:55: Warning: A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.7.0 [GradleDependency]
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -73,6 +104,17 @@
    are cases where you deliberately want to stick with an older version.
    However, you may simply not be aware that a more recent version is
    available, and that is what this lint check helps find.
+
+/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client/1.44.1/d8956bacb8a4011365fa15a690482c49a70c78c5/google-http-client-1.44.1.jar: Warning: checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers [TrustAllX509TrustManager]
+/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client/1.44.1/d8956bacb8a4011365fa15a690482c49a70c78c5/google-http-client-1.44.1.jar: Warning: checkServerTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers [TrustAllX509TrustManager]
+
+   Explanation for issues of type "TrustAllX509TrustManager":
+   This check looks for X509TrustManager implementations whose
+   checkServerTrusted or checkClientTrusted methods do nothing (thus trusting
+   any certificate chain) which could result in insecure network traffic
+   caused by trusting arbitrary TLS/SSL certificates presented by peers.
+
+   https://goo.gle/TrustAllX509TrustManager
 
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/AndroidManifest.xml:27: Warning: BroadcastReceivers that declare an intent-filter for SMS_DELIVER or SMS_RECEIVED must ensure that the caller has the BROADCAST_SMS permission, otherwise it is possible for malicious actors to spoof intents [UnprotectedSMSBroadcastReceiver]
         <receiver android:name=".SmsReceiver"
@@ -88,7 +130,7 @@
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/LogAdapter.java:23: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:53: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:54: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -98,7 +140,7 @@
    all existing items and structure may no longer be valid. `LayoutManager`s
    will be forced to fully rebind and relayout all visible views.
 
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:51: Warning: Unnecessary; SDK_INT is always >= 23 [ObsoleteSdkInt]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/SmsReceiver.java:53: Warning: Unnecessary; SDK_INT is always >= 23 [ObsoleteSdkInt]
     @RequiresApi(api = Build.VERSION_CODES.M)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/values/themes.xml:13: Warning: Unnecessary; SDK_INT is always >= 21 [ObsoleteSdkInt]
@@ -157,6 +199,15 @@
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:39: Warning: Missing autofillHints attribute [Autofill]
         <EditText
          ~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:60: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:69: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:92: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:32: Warning: Missing autofillHints attribute [Autofill]
     <EditText
      ~~~~~~~~
@@ -193,7 +244,7 @@
 
    https://developer.android.com/guide/topics/text/autofill.html
 
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:73: Warning: Missing contentDescription attribute on image [ContentDescription]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:95: Warning: Missing contentDescription attribute on image [ContentDescription]
     <com.google.android.material.floatingactionbutton.FloatingActionButton
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -216,34 +267,40 @@
 
    https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases
 
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:190: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:244: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
         textMessagesListened.setText("Messages Listened: " + messagesListened);
                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:190: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:244: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         textMessagesListened.setText("Messages Listened: " + messagesListened);
                                      ~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:191: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:245: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
         textMessagesFiltered.setText("Messages Filtered: " + messagesFiltered);
                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:191: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:245: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         textMessagesFiltered.setText("Messages Filtered: " + messagesFiltered);
                                      ~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:192: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:246: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
         textEmailsSent.setText("Emails Sent: " + emailsSent);
                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:192: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:246: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         textEmailsSent.setText("Emails Sent: " + emailsSent);
                                ~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:42: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:315: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            textLinkedAccount.setText("Linked Account: " + account.getEmail());
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/MainActivity.java:315: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            textLinkedAccount.setText("Linked Account: " + account.getEmail());
+                                      ~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:43: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
         holder.textViewSender.setText("Sender: " + currentRule.getSender());
                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:42: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:43: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.textViewSender.setText("Sender: " + currentRule.getSender());
                                       ~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:43: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:44: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
         holder.textViewMessagePattern.setText("Message: " + currentRule.getMessagePattern());
                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:43: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/java/com/example/filtersms/ui/RuleAdapter.java:44: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.textViewMessagePattern.setText("Message: " + currentRule.getMessagePattern());
                                               ~~~~~~~~~~~
 
@@ -272,6 +329,24 @@
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:51: Warning: Hardcoded string "Save Rule", should use @string resource [HardcodedText]
             android:text="Save Rule"/>
             ~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:57: Warning: Hardcoded string "Send to Google Sheets", should use @string resource [HardcodedText]
+            android:text="Send to Google Sheets"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:64: Warning: Hardcoded string "Google Sheet ID", should use @string resource [HardcodedText]
+            android:hint="Google Sheet ID"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:73: Warning: Hardcoded string "Sheet Name", should use @string resource [HardcodedText]
+            android:hint="Sheet Name"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:82: Warning: Hardcoded string "Verify Sheet", should use @string resource [HardcodedText]
+            android:text="Verify Sheet"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:89: Warning: Hardcoded string "Send to Webhook", should use @string resource [HardcodedText]
+            android:text="Send to Webhook"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_add_edit_rule.xml:96: Warning: Hardcoded string "Webhook URL", should use @string resource [HardcodedText]
+            android:hint="Webhook URL"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:27: Warning: Hardcoded string "Email Settings", should use @string resource [HardcodedText]
             android:text="Email Settings"
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -296,18 +371,18 @@
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_email_settings.xml:82: Warning: Hardcoded string "Send Test Email", should use @string resource [HardcodedText]
         android:text="Send Test Email"
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:35: Warning: Hardcoded string "Messages Listened: 0", should use @string resource [HardcodedText]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:40: Warning: Hardcoded string "Messages Listened: 0", should use @string resource [HardcodedText]
                 android:text="Messages Listened: 0"
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:42: Warning: Hardcoded string "Messages Filtered: 0", should use @string resource [HardcodedText]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:47: Warning: Hardcoded string "Messages Filtered: 0", should use @string resource [HardcodedText]
                 android:text="Messages Filtered: 0"
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:49: Warning: Hardcoded string "Emails Sent: 0", should use @string resource [HardcodedText]
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:54: Warning: Hardcoded string "Emails Sent: 0", should use @string resource [HardcodedText]
                 android:text="Emails Sent: 0"
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:67: Warning: Hardcoded string "Email Settings", should use @string resource [HardcodedText]
-            android:text="Email Settings"
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/activity_main.xml:89: Warning: Hardcoded string "Email Settings", should use @string resource [HardcodedText]
+        android:text="Email Settings"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/menu/main_menu.xml:4: Warning: Hardcoded string "Logs", should use @string resource [HardcodedText]
         android:title="Logs" />
         ~~~~~~~~~~~~~~~~~~~~
@@ -317,18 +392,21 @@
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/menu/main_menu.xml:10: Warning: Hardcoded string "Restore Rules", should use @string resource [HardcodedText]
         android:title="Restore Rules" />
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/menu/main_menu.xml:13: Warning: Hardcoded string "Link Google Account", should use @string resource [HardcodedText]
+        android:title="Link Google Account" />
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/menu/menu_logs.xml:5: Warning: Hardcoded string "Clear Logs", should use @string resource [HardcodedText]
         android:title="Clear Logs"
         ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:22: Warning: Hardcoded string "Sender: Example Sender", should use @string resource [HardcodedText]
-            android:text="Sender: Example Sender"/>
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:21: Warning: Hardcoded string "Sender: Example Sender", should use @string resource [HardcodedText]
+            android:text="Sender: Example Sender"
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:29: Warning: Hardcoded string "Message: Example Message Pattern", should use @string resource [HardcodedText]
-            android:text="Message: Example Message Pattern"/>
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:31: Warning: Hardcoded string "Message: Example Message Pattern", should use @string resource [HardcodedText]
+            android:text="Message: Example Message Pattern"
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:37: Warning: Hardcoded string "Delete", should use @string resource [HardcodedText]
-            android:text="Delete"
-            ~~~~~~~~~~~~~~~~~~~~~
+/Users/bala.phanichand/AndroidStudioProjects/FilterSMS/app/src/main/res/layout/rule_item.xml:42: Warning: Hardcoded string "Delete Rule", should use @string resource [HardcodedText]
+            android:contentDescription="Delete Rule"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Explanation for issues of type "HardcodedText":
    Hardcoding text attributes directly in layout files is bad for several
@@ -344,4 +422,4 @@
    There are quickfixes to automatically extract this hardcoded string into a
    resource lookup.
 
-0 errors, 60 warnings
+0 errors, 79 warnings

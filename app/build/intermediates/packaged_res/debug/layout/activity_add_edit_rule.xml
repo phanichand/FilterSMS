@@ -50,6 +50,54 @@
             android:layout_height="wrap_content"
             android:text="Save Rule"/>
 
+        <Switch
+            android:id="@+id/switchGoogleSheets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send to Google Sheets"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextSheetId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Google Sheet ID"
+            android:inputType="text"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editTextSheetName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sheet Name"
+            android:inputType="text"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/buttonVerifySheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verify Sheet"
+            android:visibility="gone"/>
+
+        <Switch
+            android:id="@+id/switchWebhook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send to Webhook"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextWebhookUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Webhook URL"
+            android:inputType="textUri"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

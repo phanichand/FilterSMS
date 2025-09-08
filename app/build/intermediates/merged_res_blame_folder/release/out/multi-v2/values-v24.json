@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.filtersms.app-mergeReleaseResources-30:/values-v24/values-v24.xml",
+            "outputFile": "com.example.filtersms.app-mergeReleaseResources-33:/values-v24/values-v24.xml",
             "map": [
                 {
                     "source": "/Users/bala.phanichand/.gradle/caches/transforms-3/68b2f9db80fd5fbadc0f11fe19280caa/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",

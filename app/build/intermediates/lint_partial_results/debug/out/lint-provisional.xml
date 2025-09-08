@@ -2,6 +2,62 @@
 <incidents format="6" by="lint 8.2.0" type="conditional_incidents">
 
     <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_delete.xml"
+            line="6"
+            column="19"
+            startOffset="203"
+            endLine="6"
+            endColumn="43"
+            endOffset="227"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_delete.xml"
+            line="8"
+            column="26"
+            startOffset="263"
+            endLine="8"
+            endColumn="46"
+            endOffset="283"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
         id="ObsoleteSdkInt"
         severity="warning"
         message="Unnecessary; SDK_INT is always >= 21">
@@ -35,20 +91,36 @@
             replacement="">
             <range
                 file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/SmsReceiver.java"
-                startOffset="1841"
-                endOffset="1882"/>
+                startOffset="1892"
+                endOffset="1933"/>
         </fix-replace>
         <location
             file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/filtersms/SmsReceiver.java"
-            line="51"
+            line="53"
             column="5"
-            startOffset="1841"
-            endLine="51"
+            startOffset="1892"
+            endLine="53"
             endColumn="46"
-            endOffset="1882"/>
+            endOffset="1933"/>
         <map>
             <condition minGE="ffffffffffc00000"/>
         </map>
+    </incident>
+
+    <incident
+        id="DuplicatePlatformClasses"
+        severity="fatal"
+        message="`commons-logging` defines classes that conflict with classes now provided by Android. Solutions include finding newer versions or alternative libraries that don&apos;t have the same problem (for example, for `httpclient` use `HttpUrlConnection` or `okhttp` instead), or repackaging the library using something like `jarjar`.">
+        <location
+            file="${:app*projectDir}/build.gradle"/>
+    </incident>
+
+    <incident
+        id="DuplicatePlatformClasses"
+        severity="fatal"
+        message="`httpclient` defines classes that conflict with classes now provided by Android. Solutions include finding newer versions or alternative libraries that don&apos;t have the same problem (for example, for `httpclient` use `HttpUrlConnection` or `okhttp` instead), or repackaging the library using something like `jarjar`.">
+        <location
+            file="${:app*projectDir}/build.gradle"/>
     </incident>
 
 </incidents>

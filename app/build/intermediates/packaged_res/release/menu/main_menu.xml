@@ -8,4 +8,7 @@
     <item
         android:id="@+id/action_restore"
         android:title="Restore Rules" />
+    <item
+        android:id="@+id/action_link_google_account"
+        android:title="Link Google Account" />
 </menu>

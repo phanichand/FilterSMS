@@ -26,6 +26,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="com.google.android.gms:play-services-auth:21.2.0@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-auth:21.2.0"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/3dffc48409afd5124f2f9ba218917b22/transformed/jetified-play-services-auth-21.2.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="androidx.viewpager2:viewpager2:1.0.0@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/c5823786f2fa5ae2f51292213befa6da/transformed/jetified-viewpager2-1.0.0/jars/classes.jar"
       resolved="androidx.viewpager2:viewpager2:1.0.0"
@@ -39,10 +52,88 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.fragment:fragment:1.3.6@aar"
-      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/e8aab66b1989008ac9afd67506ca5f90/transformed/fragment-1.3.6/jars/classes.jar"
-      resolved="androidx.fragment:fragment:1.3.6"
-      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/e8aab66b1989008ac9afd67506ca5f90/transformed/fragment-1.3.6"
+      name="com.google.android.gms:play-services-auth-api-phone:18.0.2@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/eeb0f57de471e69ae1e877cc239b331b/transformed/jetified-play-services-auth-api-phone-18.0.2/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-auth-api-phone:18.0.2"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/eeb0f57de471e69ae1e877cc239b331b/transformed/jetified-play-services-auth-api-phone-18.0.2"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-auth-base:18.0.10@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/178c5afc9d08961e1756917a91ab9518/transformed/jetified-play-services-auth-base-18.0.10/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-auth-base:18.0.10"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/178c5afc9d08961e1756917a91ab9518/transformed/jetified-play-services-auth-base-18.0.10"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-fido:20.0.1@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/bf27264a57a5101f491c9e4cb520796d/transformed/jetified-play-services-fido-20.0.1/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-fido:20.0.1"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/bf27264a57a5101f491c9e4cb520796d/transformed/jetified-play-services-fido-20.0.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-base:18.3.0@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/c932a3b714e756012def3441b2096260/transformed/jetified-play-services-base-18.3.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-base:18.3.0"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/c932a3b714e756012def3441b2096260/transformed/jetified-play-services-base-18.3.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-tasks:18.1.0@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/631073596c6ceaaaa204f08ac92cdbc6/transformed/jetified-play-services-tasks-18.1.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-tasks:18.1.0"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/631073596c6ceaaaa204f08ac92cdbc6/transformed/jetified-play-services-tasks-18.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-basement:18.3.0@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/873c482681c6bd23291d576229c25026/transformed/jetified-play-services-basement-18.3.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-basement:18.3.0"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/873c482681c6bd23291d576229c25026/transformed/jetified-play-services-basement-18.3.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.fragment:fragment:1.5.7@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/17733469605d6d4f502c59620c729e19/transformed/fragment-1.5.7/jars/classes.jar"
+      resolved="androidx.fragment:fragment:1.5.7"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/17733469605d6d4f502c59620c729e19/transformed/fragment-1.5.7"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -169,6 +260,32 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="androidx.legacy:legacy-support-core-utils:1.0.0@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/31048ef192dd2b365bfbd09c13c36f95/transformed/legacy-support-core-utils-1.0.0/jars/classes.jar"
+      resolved="androidx.legacy:legacy-support-core-utils:1.0.0"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/31048ef192dd2b365bfbd09c13c36f95/transformed/legacy-support-core-utils-1.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.loader:loader:1.1.0@aar"
+      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/652745c3e2486771da09db786c321c9f/transformed/loader-1.1.0/jars/classes.jar"
+      resolved="androidx.loader:loader:1.1.0"
+      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/652745c3e2486771da09db786c321c9f/transformed/loader-1.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="androidx.viewpager:viewpager:1.0.0@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/b162b02894c5d9a87d33e417890e4f6a/transformed/viewpager-1.0.0/jars/classes.jar"
       resolved="androidx.viewpager:viewpager:1.0.0"
@@ -186,32 +303,6 @@
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/5cf33c513eb8caa16208701b68e21c73/transformed/customview-1.1.0/jars/classes.jar"
       resolved="androidx.customview:customview:1.1.0"
       folder="/Users/bala.phanichand/.gradle/caches/transforms-3/5cf33c513eb8caa16208701b68e21c73/transformed/customview-1.1.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.legacy:legacy-support-core-utils:1.0.0@aar"
-      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/31048ef192dd2b365bfbd09c13c36f95/transformed/legacy-support-core-utils-1.0.0/jars/classes.jar"
-      resolved="androidx.legacy:legacy-support-core-utils:1.0.0"
-      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/31048ef192dd2b365bfbd09c13c36f95/transformed/legacy-support-core-utils-1.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.loader:loader:1.0.0@aar"
-      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/16d5d7615e8c23452fc0891a514c9cde/transformed/loader-1.0.0/jars/classes.jar"
-      resolved="androidx.loader:loader:1.0.0"
-      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/16d5d7615e8c23452fc0891a514c9cde/transformed/loader-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -372,19 +463,6 @@
       jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar"
       resolved="androidx.collection:collection:1.1.0"/>
   <library
-      name="androidx.lifecycle:lifecycle-livedata:2.0.0@aar"
-      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/e232feae6bcb8a6152e0319b3d8c4173/transformed/lifecycle-livedata-2.0.0/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-livedata:2.0.0"
-      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/e232feae6bcb8a6152e0319b3d8c4173/transformed/lifecycle-livedata-2.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/169706b08af78011c1fce6706ae2ebc9/transformed/lifecycle-livedata-core-2.5.1/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-livedata-core:2.5.1"
@@ -499,6 +577,54 @@
       jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"
       resolved="org.jetbrains:annotations:13.0"/>
   <library
+      name="com.google.api-client:google-api-client-android:2.4.0@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client-android/2.4.0/273ef80dcfab43d2b59f33bd4b388dfc77fc8904/google-api-client-android-2.4.0.jar"
+      resolved="com.google.api-client:google-api-client-android:2.4.0"/>
+  <library
+      name="com.google.http-client:google-http-client-jackson2:1.42.3@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-jackson2/1.42.3/789cafde696403b429026bf19071caf46d8c8934/google-http-client-jackson2-1.42.3.jar"
+      resolved="com.google.http-client:google-http-client-jackson2:1.42.3"/>
+  <library
+      name="com.google.apis:google-api-services-sheets:v4-rev20220927-2.0.0@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.apis/google-api-services-sheets/v4-rev20220927-2.0.0/742ffca984c77e5dd33a688336917b93a7bdac2d/google-api-services-sheets-v4-rev20220927-2.0.0.jar"
+      resolved="com.google.apis:google-api-services-sheets:v4-rev20220927-2.0.0"/>
+  <library
+      name="com.google.api-client:google-api-client:2.0.0@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client/2.0.0/c3daf5048a26a73182b5e6c81ad141fb859f0787/google-api-client-2.0.0.jar"
+      resolved="com.google.api-client:google-api-client:2.0.0"/>
+  <library
+      name="com.google.oauth-client:google-oauth-client:1.34.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.oauth-client/google-oauth-client/1.34.1/4a4f88c5e13143f882268c98239fb85c3b2c6cb2/google-oauth-client-1.34.1.jar"
+      resolved="com.google.oauth-client:google-oauth-client:1.34.1"/>
+  <library
+      name="com.google.http-client:google-http-client-gson:1.42.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-gson/1.42.1/19528e0766bbd63187ca0a8d3f5d77577c2c10b5/google-http-client-gson-1.42.1.jar"
+      resolved="com.google.http-client:google-http-client-gson:1.42.1"/>
+  <library
+      name="com.google.http-client:google-http-client-apache-v2:1.42.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-apache-v2/1.42.1/949cc0ed789e76c1ec539d8a5e60ee527b22b6c4/google-http-client-apache-v2-1.42.1.jar"
+      resolved="com.google.http-client:google-http-client-apache-v2:1.42.1"/>
+  <library
+      name="com.google.http-client:google-http-client:1.44.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client/1.44.1/d8956bacb8a4011365fa15a690482c49a70c78c5/google-http-client-1.44.1.jar"
+      resolved="com.google.http-client:google-http-client:1.44.1"/>
+  <library
+      name="io.opencensus:opencensus-contrib-http-util:0.31.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/io.opencensus/opencensus-contrib-http-util/0.31.1/3c13fc5715231fadb16a9b74a44d9d59c460cfa8/opencensus-contrib-http-util-0.31.1.jar"
+      resolved="io.opencensus:opencensus-contrib-http-util:0.31.1"/>
+  <library
+      name="com.google.guava:guava:31.1-jre@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.1-jre/60458f877d055d0c9114d9e1a2efb737b4bc282c/guava-31.1-jre.jar"
+      resolved="com.google.guava:guava:31.1-jre"/>
+  <library
+      name="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/b421526c5f297295adef1c886e5246c39d4ac629/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
+      resolved="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"/>
+  <library
+      name="com.google.errorprone:error_prone_annotations:2.23.0@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.23.0/43a27853b6c7d54893e0b1997c2c778c347179eb/error_prone_annotations-2.23.0.jar"
+      resolved="com.google.errorprone:error_prone_annotations:2.23.0"/>
+  <library
       name="androidx.constraintlayout:constraintlayout:2.1.4@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/f570898b3a8103785762393a2a8adf27/transformed/constraintlayout-2.1.4/jars/classes.jar"
       resolved="androidx.constraintlayout:constraintlayout:2.1.4"
@@ -520,9 +646,53 @@
       jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.sun.mail/android-activation/1.6.7/be2313e85510e68188c58f52eb7e5c043c3c005c/android-activation-1.6.7.jar"
       resolved="com.sun.mail:android-activation:1.6.7"/>
   <library
-      name="com.google.code.gson:gson:2.8.8@jar"
-      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.8/431fc3cbc0ff81abdbfde070062741089c3ba874/gson-2.8.8.jar"
-      resolved="com.google.code.gson:gson:2.8.8"/>
+      name="com.google.code.gson:gson:2.9.0@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.9.0/8a1167e089096758b49f9b34066ef98b2f4b37aa/gson-2.9.0.jar"
+      resolved="com.google.code.gson:gson:2.9.0"/>
+  <library
+      name="org.apache.httpcomponents:httpclient:4.5.14@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.14/1194890e6f56ec29177673f2f12d0b8e627dec98/httpclient-4.5.14.jar"
+      resolved="org.apache.httpcomponents:httpclient:4.5.14"/>
+  <library
+      name="org.apache.httpcomponents:httpcore:4.4.16@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.16/51cf043c87253c9f58b539c9f7e44c8894223850/httpcore-4.4.16.jar"
+      resolved="org.apache.httpcomponents:httpcore:4.4.16"/>
+  <library
+      name="commons-logging:commons-logging:1.2@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar"
+      resolved="commons-logging:commons-logging:1.2"/>
+  <library
+      name="commons-codec:commons-codec:1.11@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.11/3acb4705652e16236558f0f4f2192cc33c3bd189/commons-codec-1.11.jar"
+      resolved="commons-codec:commons-codec:1.11"/>
+  <library
+      name="com.google.code.findbugs:jsr305:3.0.2@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar"
+      resolved="com.google.code.findbugs:jsr305:3.0.2"/>
+  <library
+      name="com.google.guava:failureaccess:1.0.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar"
+      resolved="com.google.guava:failureaccess:1.0.1"/>
+  <library
+      name="org.checkerframework:checker-qual:3.12.0@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5/checker-qual-3.12.0.jar"
+      resolved="org.checkerframework:checker-qual:3.12.0"/>
+  <library
+      name="com.google.j2objc:j2objc-annotations:2.8@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/2.8/c85270e307e7b822f1086b93689124b89768e273/j2objc-annotations-2.8.jar"
+      resolved="com.google.j2objc:j2objc-annotations:2.8"/>
+  <library
+      name="io.opencensus:opencensus-api:0.31.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/io.opencensus/opencensus-api/0.31.1/66a60c7201c2b8b20ce495f0295b32bb0ccbbc57/opencensus-api-0.31.1.jar"
+      resolved="io.opencensus:opencensus-api:0.31.1"/>
+  <library
+      name="io.grpc:grpc-context:1.60.1@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-context/1.60.1/e823c153f507d3131a13d703fc41c67bae50b73e/grpc-context-1.60.1.jar"
+      resolved="io.grpc:grpc-context:1.60.1"/>
+  <library
+      name="com.fasterxml.jackson.core:jackson-core:2.13.4@jar"
+      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.13.4/cf934c681294b97ef6d80082faeefbe1edadf56/jackson-core-2.13.4.jar"
+      resolved="com.fasterxml.jackson.core:jackson-core:2.13.4"/>
   <library
       name="androidx.tracing:tracing:1.0.0@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/cfa67c3cda6084d3b5c3922897ea126c/transformed/jetified-tracing-1.0.0/jars/classes.jar"
@@ -540,10 +710,6 @@
       name="androidx.concurrent:concurrent-futures:1.0.0@jar"
       jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.0.0/c1e77e3ee6f4643b77496a1ddf7a2eef1aefdaa1/concurrent-futures-1.0.0.jar"
       resolved="androidx.concurrent:concurrent-futures:1.0.0"/>
-  <library
-      name="com.google.guava:listenablefuture:1.0@jar"
-      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/1.0/c949a840a6acbc5268d088e47b04177bf90b3cad/listenablefuture-1.0.jar"
-      resolved="com.google.guava:listenablefuture:1.0"/>
   <library
       name=":@@:app::debug"
       project=":app"/>
@@ -669,28 +835,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.arch.core:core-runtime:2.0.0@aar"
-      jars="/Users/bala.phanichand/.gradle/caches/transforms-3/bca25272756758745d1a1248af207208/transformed/core-runtime-2.0.0/jars/classes.jar"
-      resolved="androidx.arch.core:core-runtime:2.0.0"
-      provided="true"
-      folder="/Users/bala.phanichand/.gradle/caches/transforms-3/bca25272756758745d1a1248af207208/transformed/core-runtime-2.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="androidx.arch.core:core-common:2.1.0@jar"
       jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.1.0/b3152fc64428c9354344bd89848ecddc09b6f07e/core-common-2.1.0.jar"
       resolved="androidx.arch.core:core-common:2.1.0"
       provided="true"/>
-  <library
-      name="com.google.code.findbugs:jsr305:2.0.2@jar"
-      jars="/Users/bala.phanichand/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.2/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.2.jar"
-      resolved="com.google.code.findbugs:jsr305:2.0.2"/>
   <library
       name="androidx.test.espresso:espresso-idling-resource:3.5.1@aar"
       jars="/Users/bala.phanichand/.gradle/caches/transforms-3/30bb8eff81a327a3c7a0aa9562126981/transformed/espresso-idling-resource-3.5.1/jars/classes.jar"
